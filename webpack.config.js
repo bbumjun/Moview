@@ -9,6 +9,7 @@ module.exports = {
     entry : './src/index.tsx',
     output: {
         filename: 'bundle.[hash].js',
+        publicPath:'/'
     },
     devtool: "inline-source-map",
     resolve: {
@@ -54,10 +55,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'public/index.html'
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
     ],
     devServer: {
         port:port,
         open:true,
+        hot:true
     }
 }
