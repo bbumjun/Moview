@@ -1,4 +1,6 @@
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const path = require('path')
 const port = 3000
 
@@ -8,17 +10,21 @@ module.exports = {
     output: {
         filename: 'bundle.[hash].js',
     },
-    // Webpack의 출력물에서 디버깅을 하기위해 소스 맵을 허용합니다.
-    devtool: "source-map",
+    devtool: "inline-source-map",
     resolve: {
         alias: {
           components: path.resolve(__dirname, 'src/components'),
         },
         modules: ['node_modules'],
-        extensions: ['.tsx', '.ts','.js'],
+        extensions: ['.tsx','.ts','.js'],
       },
     module : {
         rules : [
+            {
+                test: /\.(js|ts)$/,
+                exclude: /node_modules/,
+                use :'babel-loader',
+            },
             {
                 test:/\.tsx?$/,
                 use:'ts-loader',
@@ -44,9 +50,11 @@ module.exports = {
         ]
     },
     plugins : [
+        new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({
             template: 'public/index.html'
-        })
+        }),
+        new CleanWebpackPlugin()
     ],
     devServer: {
         port:port,
