@@ -1,0 +1,14 @@
+{
+     // Set the default
+     "editor.formatOnSave": true,
+     // Enable per-language
+     "[javascript,typescript,typescriptreact]": {
+          "editor.formatOnSave": true
+     },
+     "editor.codeActionsOnSave": {
+          // For ESLint
+          "source.fixAll.eslint": true
+     },
+     "editor.defaultFormatter": "esbenp.prettier-vscode",
+     "eslint.workingDirectories": [{ "mode": "auto" }]
+}
