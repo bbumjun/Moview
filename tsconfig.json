@@ -1,13 +1,22 @@
 {
     "compilerOptions": {
-      "outDir": "./public/",
+      "outDir": "./dist/",
       "sourceMap": true,
       "noImplicitAny": true,
       "module": "commonjs",
       "target": "esnext",
       "jsx": "react",
       "allowJs": true,
+      "esModuleInterop": true,
+      "baseUrl" : ".",
+      "paths":{
+        "*": [
+          "*",
+          "src/*"
+        ]
+      },
     },
+    
     "include": [
         "./src/**/*"
     ],

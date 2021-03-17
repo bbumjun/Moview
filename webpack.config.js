@@ -13,10 +13,10 @@ module.exports = {
     },
     devtool: "inline-source-map",
     resolve: {
-        alias: {
-          components: path.resolve(__dirname, 'src/components'),
-        },
-        modules: ['node_modules'],
+        modules: [
+            path.join(__dirname,'src'),
+            'node_modules'
+        ],
         extensions: ['.tsx','.ts','.js'],
       },
     module : {
