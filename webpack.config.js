@@ -1,66 +1,72 @@
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const path = require('path')
-const port = 3000
-
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require("path");
+const port = 3000;
+const dotenv = require("dotenv");
 module.exports = {
-    mode : "development",
-    entry : './src/index.tsx',
-    output: {
-        filename: 'bundle.[hash].js',
-        publicPath:'/'
+  mode: "development",
+  entry: "./src/index.tsx",
+  output: {
+    filename: "bundle.[hash].js",
+    publicPath: "/",
+    pathinfo: false,
+  },
+  optimization: {
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
+  },
+  resolve: {
+    modules: [path.join(__dirname, "src"), "node_modules"],
+    extensions: [".tsx", ".ts", ".js", ".css"],
+    fallback: {
+      fs: false,
+      path: false,
     },
-    devtool: "inline-source-map",
-    resolve: {
-        modules: [
-            path.join(__dirname,'src'),
-            'node_modules'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true,
+              experimentalWatchApi: true,
+            },
+          },
         ],
-        extensions: ['.tsx','.ts','.js'],
+        exclude: /node_modules/,
       },
-    module : {
-        rules : [
-            {
-                test: /\.(js|ts)$/,
-                exclude: /node_modules/,
-                use :'babel-loader',
-            },
-            {
-                test:/\.tsx?$/,
-                use:'ts-loader',
-                exclude:/node_modules/
-            },
-            {
-                test: /\.css$/,
-                use : [
-                    {
-                        loader : 'style-loader'
-                    },
-                    {
-                        loader : 'css-loader'
-                    }
-                ]
-            },
-            // 모든 '.js' 출력 파일은 'source-map-loader'에서 다시 처리한 소스 맵이 있습니다.
-            {
-            enforce: "pre",
-            test: /\.js$/,
-            loader: "source-map-loader"
-            }
-        ]
-    },
-    plugins : [
-        new webpack.ProgressPlugin(),
-        new HtmlWebpackPlugin({
-            template: 'public/index.html'
-        }),
-        new CleanWebpackPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader: "css-loader",
+          },
+        ],
+      },
     ],
-    devServer: {
-        port:port,
-        open:true,
-        hot:true
-    }
-}
+  },
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new HtmlWebpackPlugin({
+      template: "public/index.html",
+    }),
+    new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(dotenv.config().parsed),
+    }),
+  ],
+  devServer: {
+    port: port,
+    open: true,
+    hot: true,
+  },
+};

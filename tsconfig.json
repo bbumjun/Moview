@@ -1,26 +1,19 @@
 {
-    "compilerOptions": {
-      "outDir": "./dist/",
-      "sourceMap": true,
-      "noImplicitAny": true,
-      "module": "commonjs",
-      "target": "esnext",
-      "jsx": "react",
-      "allowJs": true,
-      "esModuleInterop": true,
-      "baseUrl" : ".",
-      "paths":{
-        "*": [
-          "*",
-          "src/*"
-        ]
-      },
-    },
-    
-    "include": [
-        "./src/**/*"
-    ],
-    "exclude": [
-        "./node_modules/**/*"
-    ]
-  }
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "react",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "paths": {
+      "*": ["*", "src/*"]
+    }
+  },
+
+  "include": ["./src/**/*"],
+  "exclude": ["./node_modules/**/*"]
+}

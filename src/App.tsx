@@ -1,13 +1,12 @@
 import React from "react";
 import Header from "components/Header";
-import theme from "theme";
-import { ThemeProvider } from "styled-components";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import TrendView from "components/TrendView";
 export const App: React.FC = () => {
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Header />
-      </ThemeProvider>
-    </>
+    <Router>
+      <Header />
+      <TrendView category="movie" />
+    </Router>
   );
 };
