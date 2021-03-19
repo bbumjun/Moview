@@ -10,6 +10,7 @@ module.exports = {
   output: {
     filename: "bundle.[hash].js",
     publicPath: "/",
+    path: path.join(__dirname, "dist"),
     pathinfo: false,
   },
   optimization: {
@@ -54,11 +55,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
-    new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(dotenv.config().parsed),
