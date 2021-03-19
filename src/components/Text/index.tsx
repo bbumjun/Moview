@@ -1,5 +1,12 @@
-import React from "react";
 import styled from "styled-components";
 
-const Text = styled.div``;
+interface TextProps {
+  color?: string;
+  fontWeight?: string;
+}
+const Text = styled.div<TextProps>`
+  color: ${(props) => props.color ?? "currentColor"};
+  font-weight: ${(props) => props.fontWeight ?? "normal"};
+`;
+
 export default Text;

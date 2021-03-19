@@ -30,7 +30,7 @@ const margins = {
 const deviceSizes = {
   mobileS: "320px",
   mobileM: "375px",
-  mobileL: "450px",
+  mobileL: "480px",
   tablet: "768px",
   tabletL: "1024px",
 };
@@ -45,6 +45,7 @@ const device = {
 const colors = {
   black: "#101113",
   darkGray: "#1c1d1f",
+  lightGray: "#ebebeb",
 };
 const theme = {
   maxWidth,
