@@ -9,7 +9,6 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     filename: "bundle.[hash].js",
-    publicPath: "/",
     path: path.join(__dirname, "dist"),
     pathinfo: false,
   },
@@ -20,7 +19,7 @@ module.exports = {
   },
   resolve: {
     modules: [path.join(__dirname, "src"), "node_modules"],
-    extensions: [".tsx", ".ts", ".js", ".css"],
+    extensions: [".tsx", ".ts", ".js", "jsx", ".css"],
     fallback: {
       fs: false,
       path: false,
@@ -29,28 +28,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: "ts-loader",
-            options: {
-              transpileOnly: true,
-              experimentalWatchApi: true,
-            },
-          },
-        ],
+        test: /\.tsx?/,
+        use: ["babel-loader", "ts-loader"],
         exclude: /node_modules/,
       },
       {
+        test: /\.jsx?/,
+        use: ["babel"],
+        exclude: /node_modules/,
+      },
+
+      {
         test: /\.css$/,
-        use: [
-          {
-            loader: "style-loader",
-          },
-          {
-            loader: "css-loader",
-          },
-        ],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
   },

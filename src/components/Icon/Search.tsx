@@ -1,5 +1,5 @@
 import React from "react";
-import { IconProps } from "types";
+import { IconProps } from "./index";
 const Search: React.FC<IconProps> = ({ size = 24 }) => {
   return (
     <svg
