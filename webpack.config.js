@@ -4,7 +4,6 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 const port = 3000;
 const dotenv = require("dotenv");
-dotenv.config();
 module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
@@ -55,6 +54,8 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(dotenv.config().parsed),
     }),
+    ,
+    new dotenv(),
   ],
   devServer: {
     port: port,
