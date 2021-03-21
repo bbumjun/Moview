@@ -3,12 +3,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 const port = 3000;
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
+const Dotenv = require("dotenv-webpack");
 module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
   output: {
-    filename: "bundle.[hash].js",
+    filename: "bundle.[contenthash].js",
     path: path.join(__dirname, "dist"),
     pathinfo: false,
   },
@@ -51,9 +52,10 @@ module.exports = {
       template: "public/index.html",
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      "process.env": JSON.stringify(dotenv.config().parsed),
-    }),
+    // new webpack.DefinePlugin({
+    //   "process.env": JSON.stringify(dotenv.config().parsed),
+    // }),
+    new Dotenv(),
   ],
   devServer: {
     port: port,
