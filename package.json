@@ -68,6 +68,11 @@
   "browserslist": [
     "defaults"
   ],
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
