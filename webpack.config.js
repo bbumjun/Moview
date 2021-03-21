@@ -19,13 +19,14 @@ module.exports = {
     splitChunks: false,
   },
   resolve: {
-    modules: [path.join(__dirname, "src"), "node_modules"],
+    modules: [path.join("./"), "node_modules"],
     extensions: [".tsx", ".ts", ".js", "jsx", ".css"],
     fallback: {
       fs: false,
       path: false,
     },
   },
+
   module: {
     rules: [
       {
