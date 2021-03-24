@@ -1,9 +1,45 @@
-/node_modules
-/dist
 
-# Logs
-*.log
-
+# Created by https://www.toptal.com/developers/gitignore/api/storybookjs,react,yarn
+# Edit at https://www.toptal.com/developers/gitignore?templates=storybookjs,react,yarn
+###env
 .env
 
-**/*.snap
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+### StorybookJs ###
+# gitignore template for the Storybook, UI guide for front apps
+# website: https://storybook.js.org/
+
+storybook-static/
+**/__snapshots__/
+### yarn ###
+# https://yarnpkg.com/advanced/qa#which-files-should-be-gitignored
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# if you are NOT using Zero-installs, then:
+# comment the following lines
+!.yarn/cache
+
+# and uncomment the following lines
+# .pnp.*
+
+# End of https://www.toptal.com/developers/gitignore/api/storybookjs,react,yarn

@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 const port = 3000;
-// const dotenv = require("dotenv");
 const Dotenv = require("dotenv-webpack");
 module.exports = {
   mode: "development",
@@ -11,13 +10,8 @@ module.exports = {
   output: {
     filename: "bundle.[contenthash].js",
     path: path.join(__dirname, "dist"),
-    pathinfo: false,
   },
-  optimization: {
-    removeAvailableModules: false,
-    removeEmptyChunks: false,
-    splitChunks: false,
-  },
+
   resolve: {
     modules: [path.join("./"), "node_modules"],
     extensions: [".tsx", ".ts", ".js", "jsx", ".css"],
@@ -44,6 +38,20 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
+      {
+        test: /\.(png|jpe?g|webp)$/,
+        loader: "file-loader",
+        options: {
+          outputPath: "",
+          publicPath: "dist",
+          name(resourcePath, resourceQuery) {
+            if (process.env.NODE_ENV === "development") {
+              return "[path][name].[ext]";
+            }
+            return "[contenthash].[ext]";
+          },
+        },
+      },
     ],
   },
   plugins: [
@@ -51,14 +59,13 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: "public/index.html",
+      hash: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
-    // new webpack.DefinePlugin({
-    //   "process.env": JSON.stringify(dotenv.config().parsed),
-    // }),
     new Dotenv(),
   ],
   devServer: {
+    contentBase: "./public",
     port: port,
     open: true,
     hot: true,
