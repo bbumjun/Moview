@@ -3,4 +3,7 @@ import tw from "twin.macro";
 export const Button = styled.button`
   ${tw`p-2 rounded bg-white`}
   cursor:pointer;
+  &:focus {
+    outline: 0;
+  }
 `;
