@@ -1,25 +1,34 @@
 import React from "react";
-import * as S from "./index.style";
+import * as S from "./style";
 
 export interface TextProps {
-  size: "sm" | "base" | "lg" | "xl";
+  children: React.ReactNode | string;
+  fontSize?: number;
   color?: string;
   bgColor?: string;
   fontWeight?: number;
-  children: React.ReactNode | string;
+  fontFamily?: string;
+  padding?: string;
+  className?: string;
 }
 const Text: React.FC<TextProps> = ({
-  size,
+  fontSize = 1,
   color = "black",
   bgColor = "white",
   fontWeight = 400,
+  fontFamily = "inherit",
+  padding = "0.1rem 0",
   children,
+  className = "",
 }) => (
   <S.Text
-    className={size}
+    fontSize={fontSize}
     color={color}
     bgColor={bgColor}
     fontWeight={fontWeight}
+    fontFamily={fontFamily}
+    padding={padding}
+    className={className}
   >
     {children}
   </S.Text>
