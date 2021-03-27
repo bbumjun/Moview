@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./index.style";
+import * as S from "./style";
 import Image from "../../atoms/Image";
 import Text from "../../atoms/Text";
 export interface CardProps {
@@ -11,16 +11,16 @@ export interface CardProps {
 }
 const Card: React.FC<CardProps> = ({ title, imgSrc, date, rate, index }) => {
   return (
-    <S.CardWrapper>
+    <S.CardContainer>
       <S.ImageWrapper>
         <Image src={imgSrc} alt={title} index={index} />
       </S.ImageWrapper>
-      <Text size="base" fontWeight={900}>
+      <Text fontSize={1.2} fontWeight={900}>
         {title}
       </Text>
-      <Text size="sm">개봉일: {date.replace(/-/g, ".")}</Text>
-      <Text size="sm">⭐{rate}</Text>
-    </S.CardWrapper>
+      <Text>개봉일: {date.replace(/-/g, ".")}</Text>
+      <Text>⭐{rate}</Text>
+    </S.CardContainer>
   );
 };
 export default Card;
