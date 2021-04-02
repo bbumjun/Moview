@@ -14,7 +14,7 @@ export interface TextProps {
 const Text: React.FC<TextProps> = ({
   fontSize = 1,
   color = "black",
-  bgColor = "white",
+  bgColor = "transparent",
   fontWeight = 400,
   fontFamily = "inherit",
   padding = "0.1rem 0",

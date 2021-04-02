@@ -11,7 +11,7 @@ interface TextProps {
 }
 export const Text = styled.span<TextProps>`
   border-radius: 4px;
-  width: inherit;
+  width: fit-content;
   color: ${(p: TextProps) => p.color};
   background-color: ${(p: TextProps) => p.bgColor};
   font-weight: ${(p: TextProps) => p.fontWeight};
