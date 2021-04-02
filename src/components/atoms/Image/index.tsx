@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./index.style";
+import * as S from "./style";
 export interface ImageProps {
   src: string;
   alt: string;
