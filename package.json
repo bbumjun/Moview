@@ -67,7 +67,7 @@
     "test": "jest --watch",
     "start": "webpack serve",
     "build": "cross-env NODE_ENV=production webpack",
-    "storybook": "NODE_PATH=src start-storybook -p 6006",
+    "storybook": "NODE_PATH=src start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook"
   },
   "browserslist": [
