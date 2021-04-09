@@ -1,17 +1,16 @@
 import * as React from "react";
 import { InputProps } from "src/components/atoms/Input";
 import * as S from "./style";
-
+import Icon from "../../atoms/Icon";
 export interface SearchInputProps {
-  labelName: string | React.ReactNode;
   inputProps: InputProps;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ labelName, inputProps }) => {
+const SearchInput: React.FC<SearchInputProps> = ({ inputProps }) => {
   return (
     <S.Container>
       <S.Label>
-        {labelName}
+        <Icon alt="search" src="search.png" height={1} />
         <S.StyledInput {...inputProps} />
       </S.Label>
     </S.Container>

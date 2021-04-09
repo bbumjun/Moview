@@ -14,7 +14,6 @@ const Template: Story<SearchInputProps> = () => (
       inputName: "searchInput",
       onChange: () => {},
     }}
-    labelName="라벨명"
   />
 );
 export const Default = Template.bind({});
