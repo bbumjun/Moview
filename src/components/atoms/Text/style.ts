@@ -9,7 +9,7 @@ interface TextProps {
   fontFamily: string;
   padding: string;
 }
-export const Text = styled.span<TextProps>`
+export const Text = styled.div<TextProps>`
   border-radius: 4px;
   width: fit-content;
   color: ${(p: TextProps) => p.color};
