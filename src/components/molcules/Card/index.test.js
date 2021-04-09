@@ -1,7 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import Card from "./index";
-
+import { ThemeProvider } from "styled-components";
+import theme from "common/theme";
+import { BrowserRouter as Router } from "react-router-dom";
 describe("<Card/>", () => {
   const title = "title";
   const imgSrc = "";
@@ -10,7 +12,17 @@ describe("<Card/>", () => {
   const index = "3";
 
   const { container } = render(
-    <Card title={title} imgSrc={imgSrc} date={date} rate={rate} index={index} />
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Card
+          title={title}
+          imgSrc={imgSrc}
+          date={date}
+          rate={rate}
+          index={index}
+        />
+      </ThemeProvider>
+    </Router>
   );
   it("renders Card correctly", () => {
     expect(container).toMatchSnapshot();
