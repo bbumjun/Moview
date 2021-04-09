@@ -3,11 +3,27 @@ import * as S from "./style";
 
 export interface ButtonProps {
   children: React.ReactNode | string;
+  className?: string;
+  hidden?: boolean;
+  active?: boolean;
   onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick = null }) => (
-  <S.Button onClick={onClick}>{children}</S.Button>
+const Button: React.FC<ButtonProps> = ({
+  children,
+  onClick = null,
+  className = null,
+  hidden = false,
+  active = false,
+}) => (
+  <S.Button
+    onClick={onClick}
+    className={className}
+    hidden={hidden}
+    active={active}
+  >
+    {children}
+  </S.Button>
 );
 
 export default Button;
