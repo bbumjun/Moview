@@ -4,12 +4,26 @@ interface LinkProps {
   children: React.ReactNode | string;
   to?: string;
   href?: string;
+  className?: string;
 }
-const Link: React.FC<LinkProps> = ({ children, to = null, href = null }) => {
+const Link: React.FC<LinkProps> = ({
+  children,
+  to = null,
+  href = null,
+  className = null,
+}) => {
   if (to) {
-    return <S.StyledLink to={to}>{children}</S.StyledLink>;
+    return (
+      <S.StyledLink className={className} to={to}>
+        {children}
+      </S.StyledLink>
+    );
   } else if (href) {
-    return <S.Anchor href={href}>{children}</S.Anchor>;
+    return (
+      <S.Anchor className={className} href={href}>
+        {children}
+      </S.Anchor>
+    );
   }
 };
 export default Link;
