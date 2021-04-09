@@ -8,4 +8,5 @@ export const Wrapper = styled.span`
 `;
 export const Img = styled.img<IconProps>`
   height: ${(p: IconProps) => `${p.height}rem`};
+  width: ${(p: IconProps) => `${p.height}rem`};
 `;
