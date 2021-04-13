@@ -7,6 +7,7 @@ describe("<Input/>", () => {
     value: "",
     placeholder: "placeholder 로 들어갈 내용",
     inputName: "input 종류",
+    onChange: () => {},
   };
   const { getByPlaceholderText } = render(<Input {...props} />);
   it("renders Input Correctly", () => {
