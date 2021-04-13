@@ -1,13 +1,17 @@
 import React from "react";
-import Header from "components/Header";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import TrendView from "components/TrendView";
+import { ThemeProvider } from "styled-components";
 import "tailwindcss/tailwind.css";
+import theme from "src/common/theme";
+import MainPage from "pages/MainPage";
 export const App: React.FC = () => {
   return (
     <Router>
-      <Header />
-      <TrendView category="movie" />
+      <ThemeProvider theme={theme}>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+        </Switch>
+      </ThemeProvider>
     </Router>
   );
 };
