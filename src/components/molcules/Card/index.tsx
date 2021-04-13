@@ -4,6 +4,7 @@ import Image from "../../atoms/Image";
 import Text from "../../atoms/Text";
 import AspectRatio from "components/atoms/AspectRatio";
 export interface CardProps {
+  category: string;
   title: string;
   imgSrc: string;
   date: string;
