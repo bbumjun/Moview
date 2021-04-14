@@ -29,7 +29,7 @@ const Card: React.FC<CardProps> = ({
             <Image src={imgSrc} alt={title} index={index} />
           </AspectRatio>
         </S.ImageWrapper>
-        <Text fontSize={1.2} fontWeight={900}>
+        <Text fontSize={1} fontWeight={900}>
           {title}
         </Text>
         <Text fontWeight={300}>{date.replace(/-/g, ".")}</Text>

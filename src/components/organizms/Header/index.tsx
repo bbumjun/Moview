@@ -34,24 +34,24 @@ const Header: React.FC<IHeaderProps> = ({
             </S.Logo>
           </Link>
           <ButtonList>
-            <Button
+            <S.StyledButton
               key={CATEGORY_MOVIE}
               onClick={onMovieClick}
               active={contentType == "movie"}
             >
               {CATEGORY_MOVIE}
-            </Button>
-            <Button
+            </S.StyledButton>
+            <S.StyledButton
               key={CATEGORY_TV}
               onClick={onTVClick}
               active={contentType == "tv"}
             >
               {CATEGORY_TV}
-            </Button>
+            </S.StyledButton>
           </ButtonList>
         </S.LeftSideContainer>
         <S.RightSideContainer>
-          <SearchInput
+          <S.SearchBar
             inputProps={{
               value,
               placeholder: "작품 제목을 검색해보세요.",

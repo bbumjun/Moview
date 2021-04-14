@@ -12,7 +12,7 @@ export interface TextProps {
   className?: string;
 }
 const Text: React.FC<TextProps> = ({
-  fontSize = 1,
+  fontSize = 0.8,
   color = "black",
   bgColor = "transparent",
   fontWeight = 400,

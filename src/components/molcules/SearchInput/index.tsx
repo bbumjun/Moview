@@ -4,11 +4,15 @@ import * as S from "./style";
 import Icon from "../../atoms/Icon";
 export interface SearchInputProps {
   inputProps: InputProps;
+  className?: string;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ inputProps }) => {
+const SearchInput: React.FC<SearchInputProps> = ({
+  inputProps,
+  className = "",
+}) => {
   return (
-    <S.Container>
+    <S.Container className={className}>
       <S.Label>
         <Icon alt="search" src="search.png" height={1} />
         <S.StyledInput {...inputProps} />

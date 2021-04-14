@@ -5,8 +5,9 @@ interface IButtonProps {
   active: boolean;
 }
 export const Button = styled.button<IButtonProps>`
-  ${tw`p-2 rounded bg-white`}
-  cursor:pointer;
+  /* ${tw`p-2 rounded bg-white`} */
+  background-color: white;
+  cursor: pointer;
   &:focus {
     outline: 0;
   }

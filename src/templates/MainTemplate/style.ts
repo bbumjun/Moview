@@ -11,6 +11,11 @@ export const Header = styled.header`
   top: 0;
   width: 100%;
   z-index: 999;
+
+  @media (max-width: ${({ theme }) => theme.deviceSizes.laptop}) {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
 `;
 export const Content = styled.section`
   width: 100%;
@@ -19,7 +24,8 @@ export const Content = styled.section`
   margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.deviceSizes.laptop}) {
-    padding: 3rem;
+    padding-left: 3%;
+    padding-right: 3%;
   }
 `;
 export const Footer = styled.footer`

@@ -18,4 +18,8 @@ export const Text = styled.div<TextProps>`
   font-family: ${(p: TextProps) => p.fontFamily};
   font-size: ${(p: TextProps) => `${p.fontSize}rem`};
   padding: ${(p: TextProps) => p.padding};
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
+    font-size: ${(p: TextProps) => `${p.fontSize * 0.75}rem`};
+  }
 `;
