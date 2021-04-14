@@ -5,7 +5,8 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
   ${({ theme }) => `
   html,body {
-    min-height:100vh;
+    font-family: 'Noto Sans KR','Oxygen', sans-serif;
+    scroll-behavior: smooth;
   }
   `}
 `;
