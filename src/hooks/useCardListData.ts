@@ -30,7 +30,6 @@ const useCardListData = ({ category, params }: props) => {
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_TMDB_KEY);
     let mounted = true;
     setLoading(true);
     axios({
