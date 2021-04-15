@@ -5,11 +5,11 @@ import { ThemeProvider } from "styled-components";
 import theme from "src/common/theme";
 import { App } from "./App";
 import { worker } from "mokcs/browser";
-
+require.context("./images", true, /\.(png|jpe?g|webp|svg)$/);
 if (process.env.NODE_ENV === "development") {
   worker.start();
 }
-
+console.log(process.env);
 const Wrapper: React.FC = () => (
   <ThemeProvider theme={theme}>
     <App />

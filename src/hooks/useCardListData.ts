@@ -28,6 +28,7 @@ const useCardListData = ({ category, params }: props) => {
   const [data, setData] = useState<CardProps[]>(null);
   const [loading, setLoading] = useState(false);
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
+
   useEffect(() => {
     let mounted = true;
     setLoading(true);

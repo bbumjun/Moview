@@ -9,7 +9,7 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     filename: "bundle.[contenthash].js",
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "public"),
   },
 
   resolve: {
@@ -39,17 +39,10 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
-        test: /\.(png|jpe?g|webp)$/,
+        test: /\.(png|jpe?g|webp|svg)$/,
         loader: "file-loader",
         options: {
-          outputPath: "",
-          publicPath: "dist",
-          name(resourcePath, resourceQuery) {
-            if (process.env.NODE_ENV === "development") {
-              return "[path][name].[ext]";
-            }
-            return "[contenthash].[ext]";
-          },
+          name: "[name].[ext]",
         },
       },
     ],
@@ -58,14 +51,16 @@ module.exports = {
     new CleanWebpackPlugin(),
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
-      template: "public/index.html",
+      template: "src/index.html",
       hash: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new Dotenv(),
+    new Dotenv({
+      systemvars: true,
+    }),
   ],
   devServer: {
-    contentBase: "./public",
+    contentBase: "public",
     port: port,
     open: true,
     hot: true,
