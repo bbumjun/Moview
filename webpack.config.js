@@ -55,7 +55,9 @@ module.exports = {
       hash: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new Dotenv(),
+    new Dotenv({
+      systemvars: true,
+    }),
   ],
   devServer: {
     contentBase: "public",
