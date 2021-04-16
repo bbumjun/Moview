@@ -9,7 +9,6 @@ require.context("./images", true, /\.(png|jpe?g|webp|svg)$/);
 if (process.env.NODE_ENV === "development") {
   worker.start();
 }
-console.log(process.env);
 const Wrapper: React.FC = () => (
   <ThemeProvider theme={theme}>
     <App />
