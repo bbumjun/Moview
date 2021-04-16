@@ -1,8 +1,16 @@
 import * as React from "react";
 import * as S from "./style";
 import Card from "components/molcules/Card";
-import useCardListData, { paramsType } from "hooks/useCardListData";
 import Text from "components/atoms/Text";
+import useCardListData from "hooks/useCardListData";
+
+export type paramsType = {
+  sort_by?: string;
+  with_original_language?: string;
+  page?: number;
+  "release_date.lte"?: string;
+  "vote_count.gte"?: number;
+};
 
 export interface CardListProps {
   category: string;
@@ -19,7 +27,6 @@ const CardList: React.FC<CardListProps> = ({
     category,
     params,
   });
-
   const { useState, useEffect, useCallback } = React;
   const totalPage = 3;
   const [cardsContainerNode, setCardsContainerNode] = useState(null);
