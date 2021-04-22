@@ -10,6 +10,7 @@ export const CardContainer = styled.li`
 `;
 export const ImageWrapper = styled.div`
   width: 100%;
+  max-width: 25rem;
   border-radius: 5px;
   border: 1px solid lightgray;
   background-color: whitesmoke;

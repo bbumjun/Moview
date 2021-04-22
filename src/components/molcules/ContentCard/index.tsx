@@ -3,17 +3,18 @@ import * as S from "./style";
 import Image from "../../atoms/Image";
 import Text from "../../atoms/Text";
 import AspectRatio from "components/atoms/AspectRatio";
-export interface CardProps {
+import { ratio } from "common/utils";
+export interface ContentCardProps {
   category: string;
   title: string;
   imgSrc: string;
   date: string;
-  rate: number;
+  rate: string;
   index: number;
   id: number;
   voteCount: number;
 }
-const Card: React.FC<CardProps> = ({
+const ContentCard: React.FC<ContentCardProps> = ({
   title,
   imgSrc,
   date,
@@ -25,7 +26,7 @@ const Card: React.FC<CardProps> = ({
     <S.CardContainer>
       <S.LinkWrapper to="/">
         <S.ImageWrapper>
-          <AspectRatio ratio={0.67}>
+          <AspectRatio ratio={1 / ratio.standard}>
             <Image src={imgSrc} alt={title} index={index} />
           </AspectRatio>
         </S.ImageWrapper>
@@ -33,9 +34,12 @@ const Card: React.FC<CardProps> = ({
           {title}
         </Text>
         <Text fontWeight={300}>{date.replace(/-/g, ".")}</Text>
-        <Text>⭐{voteCount == 0 ? "평가 없음" : rate}</Text>
+        <Text>
+          ⭐{voteCount == 0 ? "평가 없음" : rate} ▪{" "}
+          {voteCount && `${voteCount}명`}{" "}
+        </Text>
       </S.LinkWrapper>
     </S.CardContainer>
   );
 };
-export default Card;
+export default ContentCard;
