@@ -4,26 +4,28 @@ import ButtonList from "../../molcules/ButtonList";
 import Button from "../../atoms/Button";
 import SearchInput from "../../molcules/SearchInput";
 import Link from "../../atoms/Link";
-import { LOGO, CATEGORY_MOVIE, CATEGORY_TV } from "common/constants/string";
+import { LOGO, CATEGORY_MOVIE, CATEGORY_TV } from "common/string";
 export interface IHeaderProps {
   contentType: string;
   onMovieClick: () => void;
   onTVClick: () => void;
+  className?: string;
 }
 const Header: React.FC<IHeaderProps> = ({
   onMovieClick,
   onTVClick,
   contentType,
+  className = null,
 }) => {
   const [value, setValue] = useState("");
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
   return (
-    <S.Wrapper>
+    <S.Wrapper className={className}>
       <S.HeaderContainer>
         <S.LeftSideContainer>
-          <Link to={"/"}>
+          <Link to={"/"} onClick={onMovieClick}>
             <S.Logo
               fontSize={2}
               fontWeight={700}

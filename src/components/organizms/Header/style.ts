@@ -24,6 +24,7 @@ export const StyledButton = styled(Button)`
   margin-right: 1rem;
   @media (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
     font-size: 1.5rem;
+    padding: 1rem 0;
   }
 `;
 export const SearchBar = styled(SearchInput)`
