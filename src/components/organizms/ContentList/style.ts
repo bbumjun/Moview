@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Icon from "components/atoms/Icon";
 import Button from "components/atoms/Button";
-export const CardListContainer = styled.ul`
+export const ContentListContainer = styled.ul`
   display: flex;
   padding: 1% 0 3% 0;
   overflow: hidden;

@@ -1,12 +1,12 @@
 import React from "react";
 import { Story } from "@storybook/react";
-import CardList, { CardListProps } from "./index";
+import ContentList, { ContentListProps } from "./index";
 
 export default {
-  component: CardList,
-  title: "CardList",
+  component: ContentList,
+  title: "ContentList",
 };
-const Template: Story<CardListProps> = (args) => <CardList {...args} />;
+const Template: Story<ContentListProps> = (args) => <ContentList {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   category: "movie",
