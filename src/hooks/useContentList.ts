@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { IContent, IContentList } from "types";
 import { getCurDate } from "common/utils";
 import { fetchContentList } from "common/requests";
-import { content } from "src/common/string";
 const topics = {
   popular: {
     sort_by: "popularity.desc",

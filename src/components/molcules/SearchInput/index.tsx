@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InputProps } from "src/components/atoms/Input";
+import { InputProps } from "components/atoms/Input";
 import * as S from "./style";
 import searchIcon from "images/search.png";
 export interface SearchInputProps {
