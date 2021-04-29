@@ -25,5 +25,5 @@ export const ratio = {
   widescreen: 2.4,
 };
 
-export const getCountryFLag: (isoCode: string) => string = (isoCode) =>
+export const getCountryFlag: (isoCode: string) => string = (isoCode) =>
   `https://flagcdn.com/16x12/${isoCode.toLowerCase()}.png`;
