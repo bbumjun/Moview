@@ -5,7 +5,7 @@ import Text from "../../atoms/Text";
 import AspectRatio from "components/atoms/AspectRatio";
 import { ratio } from "common/utils";
 export interface ContentCardProps {
-  category: string;
+  contentType: "movie" | "tv";
   title: string;
   imgSrc: string;
   date: string;
@@ -21,10 +21,12 @@ const ContentCard: React.FC<ContentCardProps> = ({
   rate,
   index,
   voteCount,
+  contentType,
+  id,
 }) => {
   return (
     <S.CardContainer>
-      <S.LinkWrapper to="/">
+      <S.LinkWrapper to={`/contents/${contentType}/${id}`}>
         <S.ImageWrapper>
           <AspectRatio ratio={1 / ratio.standard}>
             <Image src={imgSrc} alt={title} index={index} />
