@@ -34,19 +34,20 @@ const Profile: React.FC<IContentDetail & { bgColor: string }> = (props) => {
         </S.PosterWrapper>
         <S.TextContainer>
           <S.Title>{title}</S.Title>
-          <S.BriefInfo>
-            <span>
+          <S.BriefInfoSpan>
+            <S.BriefInfo>
               {releaseYear} {genres}▪{" "}
-            </span>
-            {countries.map((country) => (
-              <S.Flag key={country.iso_3166_1}>
-                <Image
-                  src={getCountryFlag(country.iso_3166_1)}
-                  alt={country.name}
-                />
-              </S.Flag>
-            ))}
-          </S.BriefInfo>
+              {countries.map((country) => (
+                <S.Flag key={country.iso_3166_1}>
+                  <Image
+                    src={getCountryFlag(country.iso_3166_1)}
+                    alt={country.name}
+                  />
+                </S.Flag>
+              ))}
+            </S.BriefInfo>
+          </S.BriefInfoSpan>
+
           <S.VoteAverage>
             평균 ★{voteAverage} ({voteCount}명)
           </S.VoteAverage>
