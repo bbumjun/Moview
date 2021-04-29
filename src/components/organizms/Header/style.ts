@@ -19,6 +19,11 @@ export const HeaderContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: ${({ theme }) => theme.deviceSizes.laptop}) {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
 `;
 export const StyledButton = styled(Button)`
   margin-right: 1rem;
