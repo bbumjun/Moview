@@ -12,8 +12,6 @@ interface MatchParams {
   id: string;
 }
 const DetailPage: React.FC = () => {
-  // const { match } = props;
-  // const { category, id } = match.params;
   const { id, contentType } = useParams<{ id: string; contentType: string }>();
   const [loading, data, bgColor, castList] = useContentDetail({
     id,
