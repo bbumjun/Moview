@@ -7,8 +7,10 @@ export interface IOverview {
 }
 const Overview: React.FC<IOverview> = (props) => (
   <S.Container>
-    <S.Title>줄거리</S.Title>
-    <S.Summary>{`${props.tagline} ${props.overview}`}</S.Summary>
+    <S.Title fontSize={1.2} fontWeight={700} padding="1rem 0">
+      줄거리
+    </S.Title>
+    <S.Summary fontSize={1}>{`${props.tagline} ${props.overview}`}</S.Summary>
   </S.Container>
 );
 

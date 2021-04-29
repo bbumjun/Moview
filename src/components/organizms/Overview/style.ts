@@ -7,10 +7,6 @@ export const Container = styled.div`
 `;
 
 export const Title = styled(Text)`
-  font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
 `;
-export const Summary = styled(Text)`
-  font-size: 1rem;
-`;
+export const Summary = styled(Text)``;
