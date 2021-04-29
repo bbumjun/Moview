@@ -66,7 +66,9 @@ export const BriefInfo = styled(Text)`
 export const Flag = styled.div`
   display: inline-block;
   width: 1.2rem;
+  height: 100%;
   margin-right: 0.3rem;
+  margin-top: 0.5rem;
 `;
 
 export const VoteAverage = styled(Text)`
