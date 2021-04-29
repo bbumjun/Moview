@@ -10,6 +10,7 @@ module.exports = {
   output: {
     filename: "bundle.[contenthash].js",
     path: path.join(__dirname, "public"),
+    publicPath: "/",
   },
 
   resolve: {
@@ -60,9 +61,10 @@ module.exports = {
     }),
   ],
   devServer: {
-    contentBase: "public",
-    port: port,
-    open: true,
+    contentBase: [path.join(__dirname, "public"), path.join(__dirname, "src")],
+    inline: true,
     hot: true,
+    port: port,
+    historyApiFallback: true,
   },
 };
