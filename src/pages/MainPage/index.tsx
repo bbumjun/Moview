@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { contentTypeState } from "store/header";
 import { content } from "common/string";
 import useContentList from "hooks/useContentList";
-import Loader from "src/components/atoms/Loader";
+import Loader from "components/atoms/Loader";
 const MainPage: React.FC = () => {
   const contentType = useRecoilValue(contentTypeState);
   const { loading, contents } = useContentList(contentType);
