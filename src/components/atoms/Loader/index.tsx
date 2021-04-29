@@ -2,6 +2,7 @@ import { useEffect } from "@storybook/client-api";
 import React, { useState } from "react";
 import styled from "styled-components";
 import useInterval from "hooks/useInterval";
+import Text from "components/atoms/Text";
 const Wrapper = styled.div`
   position: fixed;
   width: 100%;
@@ -9,11 +10,18 @@ const Wrapper = styled.div`
   background-color: white;
 `;
 
-const Icon = styled.div`
+const IconBox = styled.div`
   position: absolute;
-  top: calc(50% - 3rem);
-  left: calc(50% - 3rem);
-  font-size: 3rem;
+  width: 5rem;
+  height: 5rem;
+  top: calc(50% - 2.5rem);
+  left: calc(50% - 2.5rem);
+`;
+const Icon = styled(Text)`
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+  text-align: center;
 `;
 
 const Loader: React.FC = () => {
@@ -24,7 +32,9 @@ const Loader: React.FC = () => {
 
   return (
     <Wrapper>
-      <Icon>{emoji[index % emoji.length]}</Icon>
+      <IconBox>
+        <Icon>{emoji[index % emoji.length]}</Icon>
+      </IconBox>
     </Wrapper>
   );
 };
