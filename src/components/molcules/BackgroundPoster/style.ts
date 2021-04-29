@@ -15,7 +15,11 @@ export const ImageWrapper = styled.div`
     width: 100%;
   }
 `;
-export const StyledAspectRatio = styled(AspectRatio)``;
+export const StyledAspectRatio = styled(AspectRatio)`
+  @media ${({ theme }) => theme.device.tablet} {
+    padding-top: 15rem;
+  }
+`;
 interface BgImgProps {
   src: string;
 }
@@ -23,6 +27,9 @@ export const BgImg = styled.div<BgImgProps>`
   background: url(${({ src }) => src}) center/cover;
   height: 100%;
   width: 100%;
+  @media ${({ theme }) => theme.device.tablet} {
+    filter: blur(4px);
+  }
 `;
 interface FilterProps {
   color: string;

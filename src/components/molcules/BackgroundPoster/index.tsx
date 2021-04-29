@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import * as S from "./style";
-import { getDominantColor } from "common/utils";
-import { smallImgUrl, originalImgUrl } from "common/url";
+import { originalImgUrl } from "common/url";
 import { ratio } from "common/utils";
 export interface IBackgroundPoster {
   imageSrc: string;
