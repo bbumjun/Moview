@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import GlobalStyle from "components/GlobalStyle";
 import { ThemeProvider } from "styled-components";
-import theme from "src/common/theme";
+import theme from "common/theme";
 import { App } from "./App";
-import { worker } from "mokcs/browser";
+import { worker } from "mocks/browser";
 require.context("./images", true, /\.(png|jpe?g|webp|svg)$/);
 if (process.env.NODE_ENV === "development") {
   worker.start();
