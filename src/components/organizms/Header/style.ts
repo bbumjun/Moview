@@ -3,10 +3,13 @@ import Text from "../../atoms/Text";
 import SearchInput from "components/molcules/SearchInput";
 import Button from "components/atoms/Button";
 export const Wrapper = styled.div`
+  position: sticky;
+  top: 0;
   @media (min-width: ${({ theme }) => theme.deviceSizes.tablet}) {
     border-bottom: 1px solid #ebebeb;
   }
   background-color: white;
+  z-index: 2;
 `;
 export const Logo = styled(Text)`
   color: #e50914;
