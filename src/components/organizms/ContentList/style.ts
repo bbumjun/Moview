@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import Icon from "components/atoms/Icon";
 import Button from "components/atoms/Button";
-export const ContentListContainer = styled.ul`
+export const ContentListContainer = styled.ul<{ $wrap: boolean }>`
   display: flex;
+  flex-wrap: ${(props) => (props.$wrap ? "wrap" : "nowrap")};
   padding: 1% 0 3% 0;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
     overflow-x: scroll;
+    overflow-x: ${(props) => (props.$wrap ? "visible" : "scroll")};
   }
 `;
 export const Wrapper = styled.div`
