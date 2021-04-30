@@ -58,3 +58,20 @@ export const fetchCastList = ({
       language: "ko-KR",
     },
   });
+
+export const fetchSimilarContents = ({
+  contentType,
+  id,
+}: {
+  contentType: string;
+  id: string;
+}): AxiosPromise<{ results: IContent[] }> =>
+  axios({
+    method: "get",
+    baseURL: url.baseUrl,
+    url: `/${contentType}/${id}/similar`,
+    params: {
+      api_key: process.env.REACT_APP_TMDB_KEY,
+      language: "ko-KR",
+    },
+  });
