@@ -1,17 +1,24 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import { Router, Switch, Route } from "react-router-dom";
 import "tailwindcss/tailwind.css";
-import theme from "src/common/theme";
 import MainPage from "pages/MainPage";
+import DetailPage from "pages/DetailPage";
+import Header from "components/organizms/Header";
+import Footer from "components/organizms/Footer";
+import { RecoilRoot } from "recoil";
+import { createBrowserHistory } from "history";
+const history = createBrowserHistory();
 export const App: React.FC = () => {
   return (
-    <Router>
-      <ThemeProvider theme={theme}>
+    <Router history={history}>
+      <RecoilRoot>
+        <Header />
         <Switch>
           <Route exact path="/" component={MainPage} />
+          <Route path="/contents/:contentType/:id" component={DetailPage} />
         </Switch>
-      </ThemeProvider>
+        <Footer />
+      </RecoilRoot>
     </Router>
   );
 };

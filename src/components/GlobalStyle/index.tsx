@@ -6,7 +6,6 @@ const GlobalStyle = createGlobalStyle`
   ${({ theme }) => `
   html,body {
     font-family: 'Noto Sans KR','Oxygen', sans-serif;
-    scroll-behavior: smooth;
   }
   `}
 `;

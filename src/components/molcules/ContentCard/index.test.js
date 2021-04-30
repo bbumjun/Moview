@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "test-utils";
-import Card from "./index";
-describe("<Card/>", () => {
+import ContentCard from "./index";
+describe("<ContentCard/>", () => {
   const title = "title";
   const imgSrc = "";
   const date = "2021-02-03";
@@ -11,7 +11,7 @@ describe("<Card/>", () => {
 
   it("matches snapshot", () => {
     const { container } = render(
-      <Card
+      <ContentCard
         title={title}
         imgSrc={imgSrc}
         date={date}
@@ -24,7 +24,7 @@ describe("<Card/>", () => {
   });
   it("renders correctly", async () => {
     const { getByText, getByAltText } = render(
-      <Card
+      <ContentCard
         title={title}
         imgSrc={imgSrc}
         date={date}

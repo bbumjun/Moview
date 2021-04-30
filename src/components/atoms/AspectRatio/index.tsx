@@ -16,9 +16,14 @@ const Inner = styled.div`
 export interface AspectRatioProps {
   children: React.ReactNode;
   ratio?: number;
+  className?: string;
 }
-const AspectRatio: React.FC<AspectRatioProps> = ({ children, ratio = 1 }) => (
-  <Outer ratio={ratio}>
+const AspectRatio: React.FC<AspectRatioProps> = ({
+  children,
+  ratio = 1,
+  className = null,
+}) => (
+  <Outer ratio={ratio} className={className}>
     <Inner>{children}</Inner>
   </Outer>
 );

@@ -1,29 +1,32 @@
 import React, { ChangeEvent, useState } from "react";
 import * as S from "./style";
 import ButtonList from "../../molcules/ButtonList";
-import Button from "../../atoms/Button";
-import SearchInput from "../../molcules/SearchInput";
 import Link from "../../atoms/Link";
-import { LOGO, CATEGORY_MOVIE, CATEGORY_TV } from "common/constants/string";
+import { LOGO, CATEGORY_MOVIE, CATEGORY_TV } from "common/string";
+import { useRecoilState } from "recoil";
+import { contentTypeState } from "store/header";
 export interface IHeaderProps {
-  contentType: string;
-  onMovieClick: () => void;
-  onTVClick: () => void;
+  className?: string;
 }
-const Header: React.FC<IHeaderProps> = ({
-  onMovieClick,
-  onTVClick,
-  contentType,
-}) => {
+const Header: React.FC<IHeaderProps> = ({ className = null }) => {
   const [value, setValue] = useState("");
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
+
+  const [contentType, setContentType] = useRecoilState(contentTypeState);
+
+  const onMovieClick = () => {
+    setContentType("movie");
+  };
+  const onTVClick = () => {
+    setContentType("tv");
+  };
   return (
-    <S.Wrapper>
+    <S.Wrapper className={className}>
       <S.HeaderContainer>
         <S.LeftSideContainer>
-          <Link to={"/"}>
+          <Link to={"/"} onClick={onMovieClick}>
             <S.Logo
               fontSize={2}
               fontWeight={700}
@@ -34,20 +37,19 @@ const Header: React.FC<IHeaderProps> = ({
             </S.Logo>
           </Link>
           <ButtonList>
-            <S.StyledButton
-              key={CATEGORY_MOVIE}
-              onClick={onMovieClick}
-              active={contentType == "movie"}
-            >
-              {CATEGORY_MOVIE}
-            </S.StyledButton>
-            <S.StyledButton
-              key={CATEGORY_TV}
-              onClick={onTVClick}
-              active={contentType == "tv"}
-            >
-              {CATEGORY_TV}
-            </S.StyledButton>
+            <Link to={"/"} onClick={onMovieClick}>
+              <S.StyledButton
+                key={CATEGORY_MOVIE}
+                active={contentType == "movie"}
+              >
+                {CATEGORY_MOVIE}
+              </S.StyledButton>
+            </Link>
+            <Link to={"/"} onClick={onTVClick}>
+              <S.StyledButton key={CATEGORY_TV} active={contentType == "tv"}>
+                {CATEGORY_TV}
+              </S.StyledButton>
+            </Link>
           </ButtonList>
         </S.LeftSideContainer>
         <S.RightSideContainer>

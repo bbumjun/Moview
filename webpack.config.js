@@ -8,8 +8,9 @@ module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
   output: {
-    filename: "bundle.[contenthash].js",
+    filename: "bundle.js",
     path: path.join(__dirname, "public"),
+    publicPath: "/",
   },
 
   resolve: {
@@ -48,7 +49,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: "src/index.html",
@@ -60,9 +61,10 @@ module.exports = {
     }),
   ],
   devServer: {
-    contentBase: "public",
-    port: port,
-    open: true,
+    contentBase: [path.join(__dirname, "public"), path.join(__dirname, "src")],
+    inline: true,
     hot: true,
+    port: port,
+    historyApiFallback: true,
   },
 };

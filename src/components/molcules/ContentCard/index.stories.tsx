@@ -1,18 +1,19 @@
 import React from "react";
 import { Story } from "@storybook/react";
-import Card, { CardProps } from "./index";
+import ContentCard, { ContentCardProps } from "./index";
 
 export default {
-  component: Card,
-  title: "Card",
+  component: ContentCard,
+  title: "ContentCard",
 };
-const Template: Story<CardProps> = (args) => <Card {...args} />;
+const Template: Story<ContentCardProps> = (args) => <ContentCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   category: "movie",
   title: "빌로우제로",
   imgSrc: "https://image.tmdb.org/t/p/w500/4SEAkDj7nflDPqCwD1LxrGkldTt.jpg",
-  rate: 6.5,
+  rate: 3.3,
   date: "2021-01-29",
   inex: 1,
+  voteCount: 3000,
 };
