@@ -28,7 +28,7 @@ const Loader: React.FC = () => {
   const emoji = ["🎥", "🍿", "🎬", "📺"];
   const [index, setIndex] = useState(0);
 
-  useInterval(() => setIndex(index + 1), 300);
+  useInterval(() => setIndex(index + 1), 200);
 
   return (
     <Wrapper>
