@@ -8,7 +8,7 @@ module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
   output: {
-    filename: "bundle.[contenthash].js",
+    filename: "bundle.js",
     path: path.join(__dirname, "public"),
     publicPath: "/",
   },
@@ -49,7 +49,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: "src/index.html",
