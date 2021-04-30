@@ -7,9 +7,12 @@ export const Wrapper = styled.div`
 export const Container = styled.ul`
   display: flex;
   overflow: hidden;
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
+    overflow-x: scroll;
+  }
 `;
 export const Item = styled.li`
-  flex: 1 0 15%;
+  flex: 1 0 20%;
   min-width: 8rem;
   padding: 0.5rem 0.5rem 0.5rem 0;
   @media ${({ theme }) => theme.device.tablet} {
@@ -24,6 +27,9 @@ export const LeftButton = styled(Button)`
   left: -1rem;
   top: 40%;
   padding: 0.5rem;
+  @media ${({ theme }) => theme.device.tablet} {
+    display: none;
+  }
 `;
 export const RightButton = styled(Button)`
   position: absolute;
@@ -32,4 +38,7 @@ export const RightButton = styled(Button)`
   right: -1rem;
   top: 40%;
   padding: 0.5rem;
+  @media ${({ theme }) => theme.device.tablet} {
+    display: none;
+  }
 `;

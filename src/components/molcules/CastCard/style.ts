@@ -4,6 +4,7 @@ import Text from "components/atoms/Text";
 
 export const Container = styled.div`
   width: 100%;
+  max-width: 15rem;
   height: 100%;
   box-shadow: 0 0 10px lightgray;
   border-radius: 5px;
