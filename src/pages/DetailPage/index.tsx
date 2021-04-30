@@ -7,13 +7,14 @@ import useContentDetail from "hooks/useContentDetail";
 import { useParams } from "react-router-dom";
 import Loader from "components/atoms/Loader";
 import CastList from "components/organizms/CastList";
-interface MatchParams {
-  category: string;
-  id: string;
-}
+import ContentList from "src/components/organizms/ContentList";
+
 const DetailPage: React.FC = () => {
-  const { id, contentType } = useParams<{ id: string; contentType: string }>();
-  const [loading, data, bgColor, castList] = useContentDetail({
+  const { id, contentType } = useParams<{
+    id: string;
+    contentType: "movie" | "tv";
+  }>();
+  const [loading, data, bgColor, castList, similarList] = useContentDetail({
     id,
     contentType,
   });
@@ -25,6 +26,13 @@ const DetailPage: React.FC = () => {
         <Template profile={<Profile {...data} bgColor={bgColor} />}>
           <Overview {...data} />
           <CastList castCards={castList} />
+          <ContentList
+            contentTitle="비슷한 작품"
+            contentType={contentType}
+            contents={similarList}
+            wrap={true}
+            titleFontSize={1.2}
+          />
         </Template>
       )}
     </Fragment>
