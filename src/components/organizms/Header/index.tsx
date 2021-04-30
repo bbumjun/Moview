@@ -18,11 +18,9 @@ const Header: React.FC<IHeaderProps> = ({ className = null }) => {
 
   const onMovieClick = () => {
     setContentType("movie");
-    window.scrollTo(0, 0);
   };
   const onTVClick = () => {
     setContentType("tv");
-    window.scrollTo(0, 0);
   };
   return (
     <S.Wrapper className={className}>
