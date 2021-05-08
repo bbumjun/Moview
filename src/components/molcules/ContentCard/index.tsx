@@ -13,6 +13,7 @@ export interface ContentCardProps {
   index: number;
   id: number;
   voteCount: number;
+  wrap?: boolean;
 }
 const ContentCard: React.FC<ContentCardProps> = ({
   title,
@@ -23,9 +24,10 @@ const ContentCard: React.FC<ContentCardProps> = ({
   voteCount,
   contentType,
   id,
+  wrap = false,
 }) => {
   return (
-    <S.CardContainer>
+    <S.CardContainer $wrap={wrap}>
       <S.LinkWrapper to={`/contents/${contentType}/${id}`}>
         <S.ImageWrapper>
           <AspectRatio ratio={1 / ratio.standard}>
