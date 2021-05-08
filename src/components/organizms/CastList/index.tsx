@@ -6,39 +6,49 @@ import Icon from "components/atoms/Icon";
 import leftArrow from "images/left-arrow.svg";
 import rightArrow from "images/right-arrow.svg";
 import Text from "components/atoms/Text";
-interface ICastCardWithId extends ICastCard {
-  id: number;
-}
+import useSwr from "swr";
+import { fetcherWithParams } from "common/requests";
+
 export interface ICastList {
-  castCards: ICastCardWithId[];
+  contentType: "movie" | "tv";
+  id: string;
 }
-const CastList: React.FC<ICastList> = ({ castCards }) => {
+const CastList: React.FC<ICastList> = ({ contentType, id }) => {
+  const { data } = useSwr<{ cast: ICastCard[] }>(
+    [`${contentType}/${id}/credits`],
+    fetcherWithParams,
+    { suspense: true }
+  );
+  const castList = data.cast;
   const {
-    cardsContainerRef,
-    handleLeftSlide,
-    handleRightSlide,
-    leftBtnHidden,
-    rightBtnHidden,
+    containerRef,
+    handlePageToLeft,
+    handlePageToRight,
+    currentPage,
+    totalPage,
   } = useSlider();
   return (
     <S.Wrapper>
       <Text fontWeight={700} fontSize={1.2} padding="1rem 0">
         주요 출연진
       </Text>
-      <S.Container ref={cardsContainerRef}>
-        {castCards.map((data) => (
-          <S.Item key={data.id}>
+      <S.Container ref={containerRef}>
+        {castList.map((cast) => (
+          <S.Item key={cast.id}>
             <CastCard
-              profile_path={data.profile_path}
-              name={data.name}
-              character={data.character}
+              profile_path={cast.profile_path}
+              name={cast.name}
+              character={cast.character}
             />
           </S.Item>
         ))}
-        <S.LeftButton onClick={handleLeftSlide} hidden={leftBtnHidden}>
+        <S.LeftButton onClick={handlePageToLeft} hidden={currentPage === 0}>
           <Icon src={leftArrow} alt="previous cards" height={1} />
         </S.LeftButton>
-        <S.RightButton onClick={handleRightSlide} hidden={rightBtnHidden}>
+        <S.RightButton
+          onClick={handlePageToRight}
+          hidden={currentPage === totalPage}
+        >
           <Icon src={rightArrow} alt="next cards" height={1} />
         </S.RightButton>
       </S.Container>

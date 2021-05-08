@@ -9,11 +9,8 @@ export const getCurDate = () => {
   return `${year}-${month}-${day}`;
 };
 
-export const getDominantColor: (src: string) => Promise<string> = async (
-  src
-) => {
-  const result = await analyze(src);
-  return result[0].color;
+export const getDominantColor: (src: string) => Promise<string> = (src) => {
+  return analyze(src).then((result) => result[0].color);
 };
 
 export const getHalfAndRounded: (rate: number) => string = (rate) =>
