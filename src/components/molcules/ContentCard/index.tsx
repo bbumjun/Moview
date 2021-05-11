@@ -27,7 +27,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   wrap = false,
 }) => {
   return (
-    <S.CardContainer $wrap={wrap}>
+    <S.CardContainer $wrap={wrap} key={id}>
       <S.LinkWrapper to={`/contents/${contentType}/${id}`}>
         <S.ImageWrapper>
           <AspectRatio ratio={1 / ratio.standard}>

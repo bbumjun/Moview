@@ -23,6 +23,7 @@ export const LeftButton = styled(Button)`
   left: -1rem;
   top: 40%;
   padding: 0.5rem;
+  font-size: 0;
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
     display: none;
   }
@@ -31,6 +32,7 @@ export const RightButton = styled(Button)`
   position: absolute;
   border-radius: 100%;
   box-shadow: 1px 0px 5px gray;
+  font-size: 0;
   padding: 0.5rem;
   right: -0.5rem;
   top: 40%;

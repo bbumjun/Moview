@@ -27,6 +27,7 @@ export const LeftButton = styled(Button)`
   left: -1rem;
   top: 40%;
   padding: 0.5rem;
+  font-size: 0;
   @media ${({ theme }) => theme.device.tablet} {
     display: none;
   }
@@ -38,6 +39,8 @@ export const RightButton = styled(Button)`
   right: -1rem;
   top: 40%;
   padding: 0.5rem;
+  font-size: 0;
+
   @media ${({ theme }) => theme.device.tablet} {
     display: none;
   }
