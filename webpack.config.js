@@ -1,9 +1,11 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 const port = 3000;
 const Dotenv = require("dotenv-webpack");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+const isProd = process.env.NODE_ENV === "production";
 module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
@@ -49,7 +51,6 @@ module.exports = {
     ],
   },
   plugins: [
-    // new CleanWebpackPlugin(),
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: "src/index.html",
@@ -59,6 +60,7 @@ module.exports = {
     new Dotenv({
       systemvars: true,
     }),
+    ...(isProd ? [] : [new BundleAnalyzerPlugin()]),
   ],
   devServer: {
     contentBase: [path.join(__dirname, "public"), path.join(__dirname, "src")],
@@ -66,5 +68,9 @@ module.exports = {
     hot: true,
     port: port,
     historyApiFallback: true,
+  },
+  stats: {
+    children: true,
+    errorDetails: true,
   },
 };

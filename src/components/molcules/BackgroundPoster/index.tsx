@@ -10,15 +10,19 @@ export interface IBackgroundPoster {
 const BackgrounPoster: React.FC<IBackgroundPoster> = ({
   imageSrc,
   bgColor,
-}) => (
-  <S.Wrapper bgColor={bgColor}>
-    <S.ImageWrapper>
-      <S.StyledAspectRatio ratio={ratio.widescreen}>
-        <S.BgImg src={originalImgUrl + imageSrc} role={"background"} />
-        <S.Filter color={bgColor} />
-      </S.StyledAspectRatio>
-    </S.ImageWrapper>
-  </S.Wrapper>
-);
+}) => {
+  return (
+    <S.Wrapper bgColor={bgColor ?? "black"}>
+      <S.ImageWrapper>
+        <S.StyledAspectRatio ratio={ratio.widescreen}>
+          {imageSrc && (
+            <S.BgImg src={originalImgUrl + imageSrc} role={"background"} />
+          )}
+          <S.Filter color={bgColor ?? "black"} />
+        </S.StyledAspectRatio>
+      </S.ImageWrapper>
+    </S.Wrapper>
+  );
+};
 
 export default BackgrounPoster;

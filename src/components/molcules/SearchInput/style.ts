@@ -2,10 +2,11 @@ import styled from "styled-components";
 import Input from "../../atoms/Input";
 import Icon from "../../atoms/Icon";
 
-import tw from "twin.macro";
 export const Container = styled.div`
-  ${tw`bg-gray-100 rounded-md p-1`}
-  width:fit-content;
+  width: fit-content;
+  background-color: ${({ theme }) => theme.colors.lightGray};
+  border-radius: 0.375rem;
+  margin: 0.25rem;
 `;
 export const StyledInput = styled(Input)``;
 export const StyledIcon = styled(Icon)`

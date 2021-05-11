@@ -2,13 +2,11 @@ import styled from "styled-components";
 import Image from "components/atoms/Image";
 import Text from "components/atoms/Text";
 
-export const Container = styled.div`
-  width: 100%;
-  max-width: 15rem;
-  height: 100%;
+export const Container = styled.li`
   box-shadow: 0 0 10px lightgray;
   border-radius: 5px;
-  overflow: hidden;
+  padding: 0 0.5rem 0 0;
+  flex: 0 0 20%;
 `;
 export const ImageWrapper = styled.div`
   display: flex;

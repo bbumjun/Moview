@@ -3,27 +3,37 @@ import * as S from "./style";
 import BackgroundPoster from "components/molcules/BackgroundPoster";
 import AspectRatioImage from "components/molcules/AspectRatioImage";
 import Image from "components/atoms/Image";
-import { ratio, getCountryFlag } from "common/utils";
+import { ratio, getCountryFlag, getDominantColor } from "common/utils";
 import { smallImgUrl } from "common/url";
-import { IContentDetail } from "types";
 import { getHalfAndRounded } from "common/utils";
+import useContentDetail from "src/hooks/useContentDetail";
+import { useRecoilValue } from "recoil";
+import { backgroundColorState } from "store/detail";
+export interface IProfile {
+  contentType: "movie" | "tv";
+  id: string;
+}
 
-const Profile: React.FC<IContentDetail & { bgColor: string }> = (props) => {
-  const backgroundPath = props.backdrop_path;
-  const title = props.title ?? props.name;
-  const releaseDate = props.release_date ?? props.first_air_date;
+const Profile: React.FC<IProfile> = ({ contentType, id }) => {
+  const { data } = useContentDetail(contentType, id);
+  const bgColor = useRecoilValue(
+    backgroundColorState(smallImgUrl + data.backdrop_path)
+  );
+  const backgroundPath = data.backdrop_path;
+  const title = data.title ?? data.name;
+  const releaseDate = data.release_date ?? data.first_air_date;
   const releaseYear = releaseDate.slice(0, 4);
-  const posterPath = smallImgUrl + props.poster_path;
-  const genres = props.genres.reduce<string>(
+  const posterPath = smallImgUrl + data.poster_path;
+  const genres = data.genres.reduce<string>(
     (acc, cur) => `${acc} ▪ ${cur.name}`,
     ""
   );
-  const countries = props.production_countries;
-  const voteAverage = getHalfAndRounded(props.vote_average);
-  const voteCount = props.vote_count;
+  const countries = data.production_countries;
+  const voteAverage = getHalfAndRounded(data.vote_average);
+  const voteCount = data.vote_count;
   return (
     <S.Container>
-      <BackgroundPoster imageSrc={backgroundPath} bgColor={props.bgColor} />
+      <BackgroundPoster imageSrc={backgroundPath} bgColor={bgColor} />
       <S.ProfileContainer>
         <S.PosterWrapper>
           <AspectRatioImage

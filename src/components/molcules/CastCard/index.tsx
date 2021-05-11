@@ -9,6 +9,7 @@ export interface ICastCard {
   profile_path: string;
   name: string;
   character: string;
+  id?: number;
 }
 const CastCard: React.FC<ICastCard> = ({ profile_path, name, character }) => (
   <S.Container>

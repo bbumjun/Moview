@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Icon from "components/atoms/Icon";
 import Button from "components/atoms/Button";
+import Text from "components/atoms/Text";
 export const ContentListContainer = styled.ul<{ $wrap: boolean }>`
   display: flex;
   flex-wrap: ${(props) => (props.$wrap ? "wrap" : "nowrap")};
@@ -16,6 +17,7 @@ export const ContentListContainer = styled.ul<{ $wrap: boolean }>`
 export const Wrapper = styled.div`
   position: relative;
 `;
+export const Title = styled(Text)``;
 export const LeftButton = styled(Button)`
   position: absolute;
   border-radius: 100%;

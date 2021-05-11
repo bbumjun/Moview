@@ -1,12 +1,14 @@
 import React from "react";
+import useContentDetail from "src/hooks/useContentDetail";
 import * as S from "./style";
 
 export interface IOverview {
-  overview: string;
-  tagline: string;
+  contentType: "movie" | "tv";
+  id: string;
 }
-const Overview: React.FC<IOverview> = (props) => {
-  const content = `${props.tagline} ${props.overview}`;
+const Overview: React.FC<IOverview> = ({ contentType, id }) => {
+  const { data } = useContentDetail(contentType, id);
+  const content = `${data.tagline} ${data.overview}`;
   return (
     <S.Container>
       <S.Title fontSize={1.2} fontWeight={700} padding="1rem 0">
