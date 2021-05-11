@@ -20,14 +20,18 @@ const CastList: React.FC<ICastList> = ({ contentType, id }) => {
     <CardList
       contentTitle={"주요 출연진"}
       titleFontSize={1.2}
-      items={castList.map((cast) => (
-        <CastCard
-          key={cast.id}
-          profile_path={cast.profile_path}
-          name={cast.name}
-          character={cast.character}
-        />
-      ))}
+      items={
+        castList.length === 0
+          ? "아직 등록된 내용이 없어요."
+          : castList.map((cast) => (
+              <CastCard
+                key={cast.id}
+                profile_path={cast.profile_path}
+                name={cast.name}
+                character={cast.character}
+              />
+            ))
+      }
     />
   );
 };
