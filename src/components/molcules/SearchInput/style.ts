@@ -6,7 +6,6 @@ export const Container = styled.div`
   width: fit-content;
   background-color: ${({ theme }) => theme.colors.lightGray};
   border-radius: 0.375rem;
-  padding: 0.25rem;
   margin: 0.25rem;
 `;
 export const StyledInput = styled(Input)``;

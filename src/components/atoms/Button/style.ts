@@ -6,6 +6,8 @@ interface IButtonProps {
 export const Button = styled.button<IButtonProps>`
   background-color: white;
   cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
   &:focus {
     outline: 0;
   }
