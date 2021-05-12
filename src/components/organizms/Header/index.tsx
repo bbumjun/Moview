@@ -1,10 +1,11 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import * as S from "./style";
 import ButtonList from "../../molcules/ButtonList";
 import Link from "../../atoms/Link";
 import { LOGO, CATEGORY_MOVIE, CATEGORY_TV } from "common/string";
 import { useRecoilState } from "recoil";
 import { contentTypeState } from "store/header";
+import theme from "common/theme";
 export interface IHeaderProps {
   className?: string;
 }
@@ -32,6 +33,7 @@ const Header: React.FC<IHeaderProps> = ({ className = null }) => {
               fontWeight={700}
               fontFamily={`'Dela Gothic One', cursive;`}
               padding={"0 1rem 0 0"}
+              color={theme.colors.red}
             >
               {LOGO}
             </S.Logo>
@@ -54,12 +56,10 @@ const Header: React.FC<IHeaderProps> = ({ className = null }) => {
         </S.LeftSideContainer>
         <S.RightSideContainer>
           <S.SearchBar
-            inputProps={{
-              value,
-              placeholder: "작품 제목을 검색해보세요.",
-              onChange: handleInputChange,
-              inputName: "searchInput",
-            }}
+            value={value}
+            placeholder="작품 제목을 검색해보세요."
+            onChange={handleInputChange}
+            inputName="searchInput"
           />
         </S.RightSideContainer>
       </S.HeaderContainer>

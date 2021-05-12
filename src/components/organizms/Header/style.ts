@@ -12,7 +12,6 @@ export const Wrapper = styled.div`
   z-index: 2;
 `;
 export const Logo = styled(Text)`
-  color: #e50914;
   @media (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
     display: none;
   }
