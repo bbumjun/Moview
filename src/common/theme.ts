@@ -50,6 +50,7 @@ const colors = {
   black: "#101113",
   darkGray: "#1c1d1f",
   lightGray: "#ebebeb",
+  red: "#e50914",
 };
 const theme = {
   maxWidth,
