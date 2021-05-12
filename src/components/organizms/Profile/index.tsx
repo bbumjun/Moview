@@ -6,7 +6,7 @@ import Image from "components/atoms/Image";
 import { ratio, getCountryFlag, getDominantColor } from "common/utils";
 import { smallImgUrl } from "common/url";
 import { getHalfAndRounded } from "common/utils";
-import useContentDetail from "src/hooks/useContentDetail";
+import useContentDetail from "hooks/useContentDetail";
 import { useRecoilValue } from "recoil";
 import { backgroundColorState } from "store/detail";
 export interface IProfile {

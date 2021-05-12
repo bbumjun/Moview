@@ -1,5 +1,5 @@
 import React from "react";
-import useContentDetail from "src/hooks/useContentDetail";
+import useContentDetail from "hooks/useContentDetail";
 import * as S from "./style";
 
 export interface IOverview {
