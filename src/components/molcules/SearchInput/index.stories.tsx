@@ -8,12 +8,10 @@ export default {
 };
 const Template: Story<SearchInputProps> = () => (
   <SearchInput
-    inputProps={{
-      value: "",
-      placeholder: "Search...",
-      inputName: "searchInput",
-      onChange: () => {},
-    }}
+    value=""
+    placeholder="Search..."
+    inputName="searchInput"
+    onChange={(e) => {}}
   />
 );
 export const Default = Template.bind({});
