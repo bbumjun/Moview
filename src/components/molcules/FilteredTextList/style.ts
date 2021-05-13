@@ -7,9 +7,6 @@ export const FilteredTextContainer = styled.div`
   background-color: white;
   border: 0.1rem ${({ theme }) => theme.colors.lightGray} solid;
   border-radius: 0.2rem;
-  @media (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    display: none;
-  }
 `;
 export const filteredTextList = styled.ul``;
 export const filterdTextItem = styled.li`

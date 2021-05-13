@@ -6,12 +6,13 @@ export const Container = styled.li`
   box-shadow: 0 0 10px lightgray;
   border-radius: 5px;
   padding: 0 0.5rem 0 0;
-  flex: 0 0 20%;
+  flex: 0 0 10%;
 `;
 export const ImageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 5rem;
 `;
 export const ProfileImage = styled(Image)``;
 export const Description = styled.div`
