@@ -3,10 +3,11 @@ import Image from "components/atoms/Image";
 import Text from "components/atoms/Text";
 
 export const Container = styled.li`
-  box-shadow: 0 0 10px lightgray;
+  box-shadow: 0 0 5px lightgray;
   border-radius: 5px;
-  padding: 0 0.5rem 0 0;
-  flex: 0 0 10%;
+  overflow: hidden;
+  margin: 0.5%;
+  flex: 0 0 11.5%;
 `;
 export const ImageWrapper = styled.div`
   display: flex;
