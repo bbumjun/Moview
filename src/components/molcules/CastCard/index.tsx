@@ -1,10 +1,10 @@
 import React from "react";
 import * as S from "./style";
-import { smallImgUrl } from "common/url";
-import avatar from "images/avatar.svg";
-import Image from "components/atoms/Image";
-import AspectRatio from "components/atoms/AspectRatio";
+import { getSmallImgUrl } from "common/url";
 import { ratio } from "common/utils";
+import AspectRatioImage from "../AspectRatioImage";
+import Icon from "components/atoms/Icon";
+import defaultImage from "images/picture.svg";
 export interface ICastCard {
   profile_path: string;
   name: string;
@@ -14,12 +14,15 @@ export interface ICastCard {
 const CastCard: React.FC<ICastCard> = ({ profile_path, name, character }) => (
   <S.Container>
     <S.ImageWrapper>
-      <AspectRatio ratio={1 / ratio.standard}>
-        <Image
-          src={profile_path ? smallImgUrl + profile_path : avatar}
+      {profile_path ? (
+        <AspectRatioImage
+          ratio={1 / ratio.standard}
+          src={getSmallImgUrl(profile_path)}
           alt={name}
         />
-      </AspectRatio>
+      ) : (
+        <Icon src={defaultImage} height={3} />
+      )}
     </S.ImageWrapper>
     <S.Description>
       <S.Name fontSize={1}>{name}</S.Name>
