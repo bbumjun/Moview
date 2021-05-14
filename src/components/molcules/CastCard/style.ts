@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "components/atoms/Image";
 import Text from "components/atoms/Text";
 
 export const Container = styled.li`

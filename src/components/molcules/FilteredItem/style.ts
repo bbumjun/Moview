@@ -25,5 +25,10 @@ export const Title = styled(Text)``;
 export const Released = styled(Text)`
   margin: 0 0.5rem;
 `;
-export const SecondLine = styled.ul``;
-export const Genre = styled.li``;
+export const SecondLine = styled.ul`
+  display: flex;
+`;
+export const Genre = styled(Text)`
+  padding: 0.2rem;
+  margin: 0.2rem;
+`;

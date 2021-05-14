@@ -5,7 +5,7 @@ export const CardContainer = styled.li<{ $wrap: boolean }>`
   padding: 0 0.5rem 0 0;
   flex: 0 0 20%;
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    flex: ${({ $wrap }) => ($wrap ? "0 0 33.3%" : "0 0 30%")};
+    flex: ${({ $wrap }) => ($wrap ? "0 0 calc(100% / 3)" : "0 0 30%")};
   }
 `;
 export const ImageWrapper = styled.div`
