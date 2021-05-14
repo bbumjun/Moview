@@ -5,7 +5,7 @@ import Text from "components/atoms/Text";
 export const ContentListContainer = styled.ul<{ $wrap: boolean }>`
   display: flex;
   flex-wrap: ${(props) => (props.$wrap ? "wrap" : "nowrap")};
-  padding: 1% 0 3% 0;
+  padding: 2% 0 2% 0;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;

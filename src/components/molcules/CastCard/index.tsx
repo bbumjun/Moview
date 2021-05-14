@@ -25,8 +25,8 @@ const CastCard: React.FC<ICastCard> = ({ profile_path, name, character }) => (
       )}
     </S.ImageWrapper>
     <S.Description>
-      <S.Name fontSize={1}>{name}</S.Name>
-      <S.Character>{character}</S.Character>
+      <S.Name fontSize={0.8}>{name}</S.Name>
+      <S.Character fontSize={0.6}>{character}</S.Character>
     </S.Description>
   </S.Container>
 );

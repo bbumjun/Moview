@@ -4,25 +4,26 @@ import Text from "components/atoms/Text";
 
 export const Container = styled.li`
   box-shadow: 0 0 5px lightgray;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 0.5%;
-  flex: 0 0 11.5%;
+  border-radius: 10px;
+  max-height: 15 rem;
+  margin: 3px;
+  flex: 0 0 calc(100% / 7 - 6px);
+  @media ${({ theme }) => theme.device.tablet} {
+    flex: 0 0 calc(100% / 3 - 6px);
+  }
 `;
 export const ImageWrapper = styled.div`
   display: flex;
   overflow: hidden;
+  border-radius: 5px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 5rem;
-  height: 9rem;
-  background-color: ${({ theme }) => theme.colors.lightGray};
+  width: 100%;
+  height: 60%;
 `;
-export const ProfileImage = styled(Image)``;
 export const Description = styled.div`
   padding: 0.5rem;
-  min-height: 5rem;
 `;
 export const Name = styled(Text)`
   font-weight: bold;
