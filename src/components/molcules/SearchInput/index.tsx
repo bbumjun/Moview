@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, ChangeEvent } from "react";
 import * as S from "./style";
 import searchIcon from "images/search.png";
-import FilteredTextList from "components/molcules/FilteredTextList";
+import FilteredTextList from "components/molcules/FilteredList";
 import { fetcherWithParams } from "common/requests";
 import useSwr from "swr";
 import useActiveElement from "hooks/useActiveElement";
@@ -25,7 +25,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   const [isFocused, setFocused] = useState(false);
   const { data } = useSwr(
     value.trim() ? ["search/multi", value] : null,
-    (url, value) => fetcherWithParams(url, { query: value })
+    (url, value) => fetcherWithParams(url, { query: value, region: "KR" })
   );
   useEffect(() => {
     setFocused(focusedElement === inputRef.current);
@@ -44,7 +44,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
           />
         </S.Label>
       </S.InputContainer>
-      {isFocused && value.trim() && data && (
+      {isFocused && value.trim() && data && data.total_results !== 0 && (
         <FilteredTextList items={data.results} />
       )}
     </S.Container>
