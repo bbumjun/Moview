@@ -32,6 +32,7 @@ export interface IContent {
   id: number;
   overview: string;
   media_type?: string;
+  genre_ids: number[];
 }
 
 export type IContentList = IContent[];
