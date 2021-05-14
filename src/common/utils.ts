@@ -8,6 +8,10 @@ export const getCurDate = () => {
   const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
   return `${year}-${month}-${day}`;
 };
+export const parseDate = (date: string) => {
+  const [year, month, day] = date.split("-");
+  return { year, month, day };
+};
 
 export const getDominantColor: (src: string) => Promise<string> = (src) => {
   return analyze(src).then((result) => result[0].color);
