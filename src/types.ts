@@ -30,6 +30,8 @@ export interface IContent {
   vote_average: number;
   vote_count: number;
   id: number;
+  overview: string;
+  media_type?: string;
 }
 
 export type IContentList = IContent[];
