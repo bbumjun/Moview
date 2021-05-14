@@ -1,6 +1,8 @@
 import styled from "styled-components";
 export const FilteredTextContainer = styled.div`
   width: 100%;
+  max-height: 20rem;
+  overflow-y: scroll;
   position: absolute;
   top: 2rem;
   margin-top: 0.2rem;

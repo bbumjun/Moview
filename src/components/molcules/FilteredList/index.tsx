@@ -3,6 +3,7 @@ import * as S from "./style";
 import Text from "components/atoms/Text";
 import theme from "common/theme";
 import { IContent, IContentList } from "types";
+import FilteredItem from "components/molcules/FilteredItem";
 export interface FilteredTextListProps {
   items: IContentList;
 }
@@ -13,9 +14,9 @@ const FilteredTextList = ({ items }: FilteredTextListProps) => {
         연관 검색어
       </Text>
       <S.filteredTextList>
-        {items.slice(0, 10).map((item: IContent) => (
+        {items.map((item: IContent) => (
           <S.filterdTextItem key={item.id}>
-            <Text>{item.title ?? item.name}</Text>
+            <FilteredItem data={item} />
           </S.filterdTextItem>
         ))}
       </S.filteredTextList>
