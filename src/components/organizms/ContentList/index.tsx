@@ -1,7 +1,7 @@
 import React from "react";
 import ContentCard from "components/molcules/ContentCard";
 import CardList from "components/molcules/CardList";
-import { smallImgUrl } from "common/url";
+import { getSmallImgUrl } from "common/url";
 import { getHalfAndRounded } from "common/utils";
 import useContentList from "hooks/useContentList";
 export interface ContentListProps {
@@ -32,7 +32,7 @@ const ContentList: React.FC<ContentListProps> = ({
           ? "아직 등록된 작품이 없어요."
           : contents.map((content, index) => {
               const title = content.title ?? content.name;
-              const imgSrc = smallImgUrl + content.poster_path;
+              const imgSrc = getSmallImgUrl(content.poster_path);
               const date = content.release_date ?? content.first_air_date;
               const rate = getHalfAndRounded(content.vote_average);
               const voteCount = content.vote_count;

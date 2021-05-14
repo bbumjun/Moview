@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import { originalImgUrl } from "common/url";
+import { getOriginalImgUrl } from "common/url";
 import { ratio } from "common/utils";
 export interface IBackgroundPoster {
   imageSrc: string;
@@ -16,7 +16,7 @@ const BackgrounPoster: React.FC<IBackgroundPoster> = ({
       <S.ImageWrapper>
         <S.StyledAspectRatio ratio={ratio.widescreen}>
           {imageSrc && (
-            <S.BgImg src={originalImgUrl + imageSrc} role={"background"} />
+            <S.BgImg src={getOriginalImgUrl(imageSrc)} role={"background"} />
           )}
           <S.Filter color={bgColor ?? "black"} />
         </S.StyledAspectRatio>
