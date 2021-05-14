@@ -17,6 +17,9 @@ export const StyledInput = styled(Input)`
   transition: all 0.3s;
   &:focus {
     width: 25rem;
+    @media ${({ theme }) => theme.device.tabletL} {
+      width: 20rem;
+    }
   }
 `;
 export const StyledIcon = styled(Icon)`
