@@ -1,7 +1,6 @@
 import React from "react";
 import { Story } from "@storybook/react";
 import BackgroundPoster, { IBackgroundPoster } from "./index";
-import { originalImgUrl, smallImgUrl } from "common/url";
 export default {
   component: BackgroundPoster,
   title: "BackgroundPoster",
