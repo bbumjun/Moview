@@ -5,7 +5,31 @@ import axios, { AxiosResponse } from "axios";
 interface genre {
   id: number;
   name: string;
+  color: string;
 }
+
+const colors = [
+  "#0066cc",
+  "#ff66ff",
+  "#ff0000",
+  "#E56717",
+  "#ffcc00",
+  "#3B3131",
+  "#9933ff",
+  "#33ccff",
+  "#000099",
+  "#cc3399",
+  "#cc9900",
+  "#ffccff",
+  "#009999",
+  "#254117",
+  "#33cc33",
+  "#660066",
+  "#cc6699",
+  "#99ffcc",
+  "#666699",
+  "#000066",
+];
 export const movieGenresState = selector({
   key: "movieGenresState",
   get: async () => {
@@ -17,7 +41,10 @@ export const movieGenresState = selector({
         language: "ko-KR",
       },
     });
-    return response.data.genres;
+    return response.data.genres.map((genre, idx) => ({
+      ...genre,
+      color: colors[idx],
+    }));
   },
 });
 
@@ -32,6 +59,9 @@ export const tvGenresState = selector({
         language: "ko-KR",
       },
     });
-    return response.data.genres;
+    return response.data.genres.map((genre, idx) => ({
+      ...genre,
+      color: colors[idx],
+    }));
   },
 });
