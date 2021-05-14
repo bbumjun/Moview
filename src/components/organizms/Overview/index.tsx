@@ -11,7 +11,7 @@ const Overview: React.FC<IOverview> = ({ contentType, id }) => {
   const content = `${data.tagline} ${data.overview}`;
   return (
     <S.Container>
-      <S.Title fontSize={1.2} fontWeight={700} padding="1rem 0">
+      <S.Title fontSize={1.2} fontWeight={700}>
         줄거리
       </S.Title>
       <S.Summary fontSize={1}>
