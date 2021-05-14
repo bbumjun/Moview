@@ -3,8 +3,8 @@ import * as S from "./style";
 import BackgroundPoster from "components/molcules/BackgroundPoster";
 import AspectRatioImage from "components/molcules/AspectRatioImage";
 import Image from "components/atoms/Image";
-import { ratio, getCountryFlag, getDominantColor } from "common/utils";
-import { smallImgUrl } from "common/url";
+import { ratio, getCountryFlag, parseDate } from "common/utils";
+import { getSmallImgUrl } from "common/url";
 import { getHalfAndRounded } from "common/utils";
 import useContentDetail from "hooks/useContentDetail";
 import { useRecoilValue } from "recoil";
@@ -17,13 +17,13 @@ export interface IProfile {
 const Profile: React.FC<IProfile> = ({ contentType, id }) => {
   const { data } = useContentDetail(contentType, id);
   const bgColor = useRecoilValue(
-    backgroundColorState(smallImgUrl + data.backdrop_path)
+    backgroundColorState(getSmallImgUrl(data.backdrop_path))
   );
   const backgroundPath = data.backdrop_path;
   const title = data.title ?? data.name;
   const releaseDate = data.release_date ?? data.first_air_date;
-  const releaseYear = releaseDate.slice(0, 4);
-  const posterPath = smallImgUrl + data.poster_path;
+  const releaseYear = parseDate(releaseDate).year;
+  const posterPath = getSmallImgUrl(data.poster_path);
   const genres = data.genres.reduce<string>(
     (acc, cur) => `${acc} ▪ ${cur.name}`,
     ""

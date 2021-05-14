@@ -3,7 +3,7 @@ import * as S from "./style";
 import Image from "../../atoms/Image";
 import Text from "../../atoms/Text";
 import AspectRatio from "components/atoms/AspectRatio";
-import { ratio } from "common/utils";
+import { ratio, parseDate } from "common/utils";
 export interface ContentCardProps {
   contentType: "movie" | "tv";
   title: string;
@@ -26,6 +26,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
   id,
   wrap = false,
 }) => {
+  const { year, month } = parseDate(date);
   return (
     <S.CardContainer $wrap={wrap} key={id}>
       <S.LinkWrapper to={`/contents/${contentType}/${id}`}>
@@ -37,7 +38,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
         <Text fontSize={1} fontWeight={900}>
           {title}
         </Text>
-        <Text fontWeight={300}>{date.replace(/-/g, ".")}</Text>
+        <Text fontWeight={300}>{`${year}.${month}`}</Text>
         <Text>
           ⭐{voteCount == 0 ? "평가 없음" : rate} ▪{" "}
           {voteCount && `${voteCount}명`}{" "}
