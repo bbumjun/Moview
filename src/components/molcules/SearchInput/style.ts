@@ -4,7 +4,7 @@ import Icon from "../../atoms/Icon";
 
 export const Container = styled.div`
   position: relative;
-  width: 15rem;
+  width: 100%;
 `;
 
 export const InputContainer = styled.div`
@@ -12,7 +12,13 @@ export const InputContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.lightGray};
   border-radius: 0.2rem;
 `;
-export const StyledInput = styled(Input)``;
+export const StyledInput = styled(Input)`
+  width: 15rem;
+  transition: all 0.3s;
+  &:focus {
+    width: 25rem;
+  }
+`;
 export const StyledIcon = styled(Icon)`
   padding: 0.5rem;
 `;
