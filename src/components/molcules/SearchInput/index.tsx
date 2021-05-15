@@ -5,8 +5,9 @@ import SearchedList from "components/molcules/SearchedList";
 import { fetcherWithParams } from "common/requests";
 import useSwr from "swr";
 import useActiveElement from "hooks/useActiveElement";
+import { useRecoilValue } from "recoil";
+import { searchInputState } from "store/header";
 export interface SearchInputProps {
-  value: string;
   placeholder: string;
   inputName: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -14,29 +15,25 @@ export interface SearchInputProps {
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
-  value,
   placeholder,
   inputName,
   onChange,
   className = "",
 }) => {
   const inputRef = useRef<HTMLInputElement>();
-  const focusedElement = useActiveElement();
-  const [isFocused, setFocused] = useState(false);
+  const inputValue = useRecoilValue(searchInputState);
   const { data } = useSwr(
-    value.trim() ? ["search/multi", value] : null,
+    inputValue.trim() ? ["search/multi", inputValue] : null,
     (url, value) => fetcherWithParams(url, { query: value })
   );
-  useEffect(() => {
-    setFocused(focusedElement === inputRef.current);
-  }, [inputRef.current, focusedElement]);
+
   return (
     <S.Container>
       <S.InputContainer className={className}>
         <S.Label>
           <S.StyledIcon alt="search" src={searchIcon} height={1} />
           <S.StyledInput
-            value={value}
+            value={inputValue}
             placeholder={placeholder}
             inputName={inputName}
             onChange={onChange}
@@ -44,7 +41,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
           />
         </S.Label>
       </S.InputContainer>
-      {value.trim() && data && data.total_results !== 0 && (
+      {inputValue.trim() && data && data.total_results !== 0 && (
         <SearchedList items={data.results} />
       )}
     </S.Container>

@@ -13,10 +13,10 @@ export const InputContainer = styled.div`
   border-radius: 0.2rem;
 `;
 export const StyledInput = styled(Input)`
-  width: 15rem;
+  width: 20rem;
   transition: all 0.3s;
   &:focus {
-    width: 25rem;
+    width: 30rem;
     @media ${({ theme }) => theme.device.tabletL} {
       width: 20rem;
     }

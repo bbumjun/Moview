@@ -4,19 +4,18 @@ import ButtonList from "../../molcules/ButtonList";
 import Link from "../../atoms/Link";
 import { LOGO, CATEGORY_MOVIE, CATEGORY_TV } from "common/string";
 import { useRecoilState } from "recoil";
-import { contentTypeState } from "store/header";
+import { contentTypeState, searchInputState } from "store/header";
 import theme from "common/theme";
 export interface IHeaderProps {
   className?: string;
 }
 const Header: React.FC<IHeaderProps> = ({ className = null }) => {
-  const [value, setValue] = useState("");
+  const [, setInputValue] = useRecoilState(searchInputState);
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setInputValue(e.target.value);
   };
 
   const [contentType, setContentType] = useRecoilState(contentTypeState);
-
   const onMovieClick = () => {
     setContentType("movie");
   };
@@ -56,7 +55,6 @@ const Header: React.FC<IHeaderProps> = ({ className = null }) => {
         </S.LeftSideContainer>
         <S.RightSideContainer>
           <S.SearchBar
-            value={value}
             placeholder="작품 제목을 검색해보세요."
             onChange={handleInputChange}
             inputName="searchInput"

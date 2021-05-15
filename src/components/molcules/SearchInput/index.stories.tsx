@@ -8,7 +8,6 @@ export default {
 };
 const Template: Story<SearchInputProps> = () => (
   <SearchInput
-    value=""
     placeholder="Search..."
     inputName="searchInput"
     onChange={(e) => {}}
