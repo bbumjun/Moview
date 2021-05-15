@@ -11,6 +11,7 @@ export interface ContentListProps {
   params?: Object;
   wrap?: boolean;
   titleFontSize?: number;
+  numberPerLine?: number;
 }
 
 const ContentList: React.FC<ContentListProps> = ({
@@ -20,6 +21,7 @@ const ContentList: React.FC<ContentListProps> = ({
   url,
   wrap = false,
   titleFontSize = 1.5,
+  numberPerLine = 5,
 }) => {
   const { contents } = useContentList(url, params);
   return (
@@ -48,6 +50,7 @@ const ContentList: React.FC<ContentListProps> = ({
                   voteCount={voteCount}
                   id={content.id}
                   wrap={wrap}
+                  numberPerLine={numberPerLine}
                 />
               );
             })

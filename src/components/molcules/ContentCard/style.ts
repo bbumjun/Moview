@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import Link from "components/atoms/Link";
 
-export const CardContainer = styled.li<{ $wrap: boolean }>`
-  padding: 0 0.5rem 0 0;
-  flex: 0 0 20%;
+export const CardContainer = styled.li<{
+  $wrap: boolean;
+  $numberPerLine: number;
+}>`
+  padding: 0 0.3rem;
+  flex: 0 0 calc(100% / ${({ $numberPerLine }) => $numberPerLine});
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
     flex: ${({ $wrap }) => ($wrap ? "0 0 calc(100% / 3)" : "0 0 30%")};
   }

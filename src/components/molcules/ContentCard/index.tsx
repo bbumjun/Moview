@@ -14,6 +14,7 @@ export interface ContentCardProps {
   id: number;
   voteCount: number;
   wrap?: boolean;
+  numberPerLine: number;
 }
 const ContentCard: React.FC<ContentCardProps> = ({
   title,
@@ -25,9 +26,10 @@ const ContentCard: React.FC<ContentCardProps> = ({
   contentType,
   id,
   wrap = false,
+  numberPerLine,
 }) => {
   return (
-    <S.CardContainer $wrap={wrap} key={id}>
+    <S.CardContainer $wrap={wrap} key={id} $numberPerLine={numberPerLine}>
       <S.LinkWrapper to={`/contents/${contentType}/${id}`}>
         <S.ImageWrapper>
           <AspectRatio ratio={1 / ratio.standard}>
