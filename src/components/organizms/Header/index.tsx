@@ -6,6 +6,7 @@ import { LOGO, CATEGORY_MOVIE, CATEGORY_TV } from "common/string";
 import { useRecoilState } from "recoil";
 import { contentTypeState, searchInputState } from "store/header";
 import theme from "common/theme";
+import useKeyPress from "hooks/useKeyPress";
 export interface IHeaderProps {
   className?: string;
 }
@@ -22,6 +23,14 @@ const Header: React.FC<IHeaderProps> = ({ className = null }) => {
   const onTVClick = () => {
     setContentType("tv");
   };
+
+  const [keyValue] = useKeyPress();
+
+  useEffect(() => {
+    if (keyValue == "Escape") {
+      setInputValue("");
+    }
+  }, [keyValue]);
   return (
     <S.Wrapper className={className}>
       <S.HeaderContainer>
