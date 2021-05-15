@@ -10,6 +10,7 @@ export const fetcherWithParams = (url: string, params?: Object) =>
     params: {
       api_key: apiKey,
       language: "ko-KR",
+      region: "KR",
       ...params,
     },
   }).then((res) => res.data);

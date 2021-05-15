@@ -25,7 +25,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   const [isFocused, setFocused] = useState(false);
   const { data } = useSwr(
     value.trim() ? ["search/multi", value] : null,
-    (url, value) => fetcherWithParams(url, { query: value, region: "KR" })
+    (url, value) => fetcherWithParams(url, { query: value })
   );
   useEffect(() => {
     setFocused(focusedElement === inputRef.current);
@@ -44,7 +44,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
           />
         </S.Label>
       </S.InputContainer>
-      {isFocused && value.trim() && data && data.total_results !== 0 && (
+      {value.trim() && data && data.total_results !== 0 && (
         <SearchedList items={data.results} />
       )}
     </S.Container>
