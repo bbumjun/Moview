@@ -1,20 +1,24 @@
 import { useState, useEffect } from "react";
 
 const useActiveElement = () => {
-  const [active, setActive] = useState(document.activeElement);
+  const [focusedElement, setFocusedElement] = useState(null);
   const handleFocusIn = (e: FocusEvent) => {
-    setActive(document.activeElement);
+    setFocusedElement(document.activeElement);
   };
+  const handleFocusOut = (e: FocusEvent) => {
+    setFocusedElement(null);
+  };
+
   useEffect(() => {
     document.addEventListener("focusin", handleFocusIn);
-    document.addEventListener("focusout", handleFocusIn);
-
+    document.addEventListener("focusout", handleFocusOut);
+    handleFocusIn;
     return () => {
       document.removeEventListener("focusin", handleFocusIn);
-      document.removeEventListener("focusout", handleFocusIn);
+      document.removeEventListener("focusout", handleFocusOut);
     };
   }, []);
 
-  return active;
+  return [focusedElement];
 };
 export default useActiveElement;
