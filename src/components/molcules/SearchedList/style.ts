@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const FilteredTextContainer = styled.div`
+export const Container = styled.div`
   width: 100%;
   max-height: 20rem;
   overflow-y: scroll;
@@ -7,11 +7,10 @@ export const FilteredTextContainer = styled.div`
   top: 2rem;
   margin-top: 0.2rem;
   background-color: white;
-  border: 0.1rem ${({ theme }) => theme.colors.lightGray} solid;
   border-radius: 0.2rem;
 `;
-export const filteredTextList = styled.ul``;
-export const filterdTextItem = styled.li`
+export const List = styled.ul``;
+export const Item = styled.li`
   padding: 0.5rem;
 
   &:hover {

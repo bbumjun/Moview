@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, ChangeEvent } from "react";
 import * as S from "./style";
 import searchIcon from "images/search.png";
-import FilteredTextList from "components/molcules/FilteredList";
+import SearchedList from "components/molcules/SearchedList";
 import { fetcherWithParams } from "common/requests";
 import useSwr from "swr";
 import useActiveElement from "hooks/useActiveElement";
@@ -45,7 +45,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         </S.Label>
       </S.InputContainer>
       {isFocused && value.trim() && data && data.total_results !== 0 && (
-        <FilteredTextList items={data.results} />
+        <SearchedList items={data.results} />
       )}
     </S.Container>
   );
