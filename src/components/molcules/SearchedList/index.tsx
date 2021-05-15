@@ -5,10 +5,15 @@ import theme from "common/theme";
 import { IContent, IContentList } from "types";
 import SearchedItem from "components/molcules/SearchedItem";
 import ErrorBoundary from "components/atoms/ErrorBoundary";
-export interface FilteredTextListProps {
+export interface SearchedListProps {
   items: IContentList;
 }
-const SearchedList = ({ items }: FilteredTextListProps) => {
+const SearchedList = ({ items }: SearchedListProps) => {
+  const filteredItems = items.filter((item) => {
+    if (item.genre_ids === undefined || item.release_date === undefined)
+      return false;
+    return true;
+  });
   return (
     <ErrorBoundary>
       <Suspense fallback={<></>}>
@@ -17,7 +22,7 @@ const SearchedList = ({ items }: FilteredTextListProps) => {
             연관 검색어
           </Text>
           <S.List>
-            {items.map((item: IContent) => (
+            {filteredItems.map((item: IContent) => (
               <S.Item key={item.id}>
                 <SearchedItem data={item} />
               </S.Item>
