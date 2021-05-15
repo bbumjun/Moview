@@ -3,12 +3,25 @@ import Input from "../../atoms/Input";
 import Icon from "../../atoms/Icon";
 
 export const Container = styled.div`
-  width: fit-content;
-  background-color: ${({ theme }) => theme.colors.lightGray};
-  border-radius: 0.375rem;
-  margin: 0.25rem;
+  position: relative;
+  width: 100%;
 `;
-export const StyledInput = styled(Input)``;
+
+export const InputContainer = styled.div`
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.lightGray};
+  border-radius: 0.2rem;
+`;
+export const StyledInput = styled(Input)`
+  width: 20rem;
+  transition: all 0.3s;
+  &:focus {
+    width: 30rem;
+    @media ${({ theme }) => theme.device.tabletL} {
+      width: 20rem;
+    }
+  }
+`;
 export const StyledIcon = styled(Icon)`
   padding: 0.5rem;
 `;

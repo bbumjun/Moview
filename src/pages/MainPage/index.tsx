@@ -49,6 +49,27 @@ const MainPage: React.FC = () => {
               with_original_language: "ko",
             }}
           />
+          <ContentList
+            contentType={contentType}
+            contentTitle={`#코미디한 #${content[contentType]}`}
+            url={`discover/${contentType}`}
+            params={{
+              sort_by: "popularity.desc",
+              with_genres: "35",
+            }}
+            numberPerLine={6}
+          />
+          <ContentList
+            contentType={contentType}
+            contentTitle={`#일본 #애니메이션 #추천`}
+            url={`discover/${contentType}`}
+            params={{
+              sort_by: "popularity.desc",
+              with_genres: "16",
+              with_original_language: "ja",
+            }}
+            numberPerLine={6}
+          />
         </MainTemplate>
       </Suspense>
     </ErrorBoundary>

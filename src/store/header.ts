@@ -4,3 +4,8 @@ export const contentTypeState = atom<keyof typeof content>({
   key: "contentType",
   default: "movie",
 });
+
+export const searchInputState = atom<string>({
+  key: "searchInputState",
+  default: "",
+});

@@ -12,7 +12,6 @@ export const Wrapper = styled.div`
   z-index: 2;
 `;
 export const Logo = styled(Text)`
-  color: #e50914;
   @media (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
     display: none;
   }
@@ -35,11 +34,7 @@ export const StyledButton = styled(Button)`
     padding: 1rem 0;
   }
 `;
-export const SearchBar = styled(SearchInput)`
-  @media (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    display: none;
-  }
-`;
+export const SearchBar = styled(SearchInput)``;
 export const LeftSideContainer = styled.div`
   display: flex;
   align-items: center;
@@ -48,4 +43,7 @@ export const LeftSideContainer = styled.div`
 export const RightSideContainer = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
+    display: none;
+  }
 `;

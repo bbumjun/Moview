@@ -1,11 +1,10 @@
 import React from "react";
 import { render } from "test-utils";
 import Profile from "./index";
-import contentDetailData from "fakeData/movieDetail";
 describe("Profile Component", () => {
   const props = {
-    ...contentDetailData,
-    bgColor: "black",
+    contentType: "movie",
+    id: "399566",
   };
   it("matches snapshot", () => {
     const { container } = render(<Profile {...props} />);

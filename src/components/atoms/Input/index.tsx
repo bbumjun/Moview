@@ -6,6 +6,7 @@ export interface InputProps {
   inputName: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  inputRef: React.RefObject<HTMLInputElement>;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -14,6 +15,7 @@ const Input: React.FC<InputProps> = ({
   onChange,
   inputName,
   className = "",
+  inputRef,
 }) => (
   <S.Input
     type="text"
@@ -22,6 +24,8 @@ const Input: React.FC<InputProps> = ({
     placeholder={placeholder}
     onChange={onChange}
     className={className}
+    autoComplete="off"
+    ref={inputRef}
   />
 );
 

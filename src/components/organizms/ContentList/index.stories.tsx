@@ -9,10 +9,8 @@ export default {
 const Template: Story<ContentListProps> = (args) => <ContentList {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  category: "movie",
-  params: {
-    sort_by: "popularity.desc",
-    with_original_language: "ko",
-  },
-  contentTitle: "국내 인기 영화",
+  contentTitle: "인기있는 한국 영화",
+  contentType: "movie",
+  url: "discover/movie",
+  params: { sort_by: "popularity.desc", with_original_language: "ko" },
 };
