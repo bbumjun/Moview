@@ -12,13 +12,13 @@ const BackgrounPoster: React.FC<IBackgroundPoster> = ({
   bgColor,
 }) => {
   return (
-    <S.Wrapper bgColor={bgColor ?? "black"}>
+    <S.Wrapper bgColor={bgColor}>
       <S.ImageWrapper>
         <S.StyledAspectRatio ratio={ratio.widescreen}>
           {imageSrc && (
             <S.BgImg src={getOriginalImgUrl(imageSrc)} role={"background"} />
           )}
-          <S.Filter color={bgColor ?? "black"} />
+          <S.Filter color={bgColor} />
         </S.StyledAspectRatio>
       </S.ImageWrapper>
     </S.Wrapper>
