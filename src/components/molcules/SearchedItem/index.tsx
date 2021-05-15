@@ -9,10 +9,10 @@ import Icon from "components/atoms/Icon";
 import { useRecoilValue } from "recoil";
 import { movieGenresState, tvGenresState } from "store/genres";
 import Link from "components/atoms/Link";
-export interface FilteredItemProps {
+export interface SearchedItemProps {
   data: IContent;
 }
-const FilteredItem = ({ data }: FilteredItemProps) => {
+const SearchedItem = ({ data }: SearchedItemProps) => {
   const movieGenres = useRecoilValue(movieGenresState);
   const tvGenres = useRecoilValue(tvGenresState);
   const date = data.release_date ?? data.first_air_date;
@@ -28,15 +28,11 @@ const FilteredItem = ({ data }: FilteredItemProps) => {
     <Link to={`/contents/${data.media_type}/${data.id}`}>
       <S.Container>
         <S.Thumnail>
-          {data.poster_path ? (
-            <AspectRatioImage
-              src={getSmallImgUrl(data.poster_path)}
-              ratio={1 / ratio.standard}
-              alt={title}
-            />
-          ) : (
-            <Icon src={defaultImage} alt={"no image"} height={2} />
-          )}
+          <AspectRatioImage
+            src={getSmallImgUrl(data.poster_path)}
+            ratio={1 / ratio.standard}
+            alt={title}
+          />
         </S.Thumnail>
         <S.TextContainer>
           <S.FirstLine>
@@ -79,4 +75,4 @@ const FilteredItem = ({ data }: FilteredItemProps) => {
   );
 };
 
-export default FilteredItem;
+export default SearchedItem;
