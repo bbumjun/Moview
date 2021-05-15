@@ -26,7 +26,6 @@ const ContentCard: React.FC<ContentCardProps> = ({
   id,
   wrap = false,
 }) => {
-  const { year, month } = parseDate(date);
   return (
     <S.CardContainer $wrap={wrap} key={id}>
       <S.LinkWrapper to={`/contents/${contentType}/${id}`}>
@@ -38,7 +37,11 @@ const ContentCard: React.FC<ContentCardProps> = ({
         <Text fontSize={1} fontWeight={900}>
           {title}
         </Text>
-        <Text fontWeight={300}>{`${year}.${month}`}</Text>
+        {date && (
+          <Text fontWeight={300}>{`${parseDate(date).year}.${
+            parseDate(date).month
+          }`}</Text>
+        )}
         <Text>
           ⭐{voteCount == 0 ? "평가 없음" : rate} ▪{" "}
           {voteCount && `${voteCount}명`}{" "}

@@ -22,12 +22,10 @@ const Profile: React.FC<IProfile> = ({ contentType, id }) => {
   const backgroundPath = data.backdrop_path;
   const title = data.title ?? data.name;
   const releaseDate = data.release_date ?? data.first_air_date;
-  const releaseYear = parseDate(releaseDate).year;
   const posterPath = getSmallImgUrl(data.poster_path);
-  const genres = data.genres.reduce<string>(
-    (acc, cur) => `${acc} ▪ ${cur.name}`,
-    ""
-  );
+  const genres = data.genres
+    ? data.genres.reduce<string>((acc, cur) => `${acc} ▪ ${cur.name}`, "")
+    : null;
   const countries = data.production_countries;
   const voteAverage = getHalfAndRounded(data.vote_average);
   const voteCount = data.vote_count;
@@ -46,15 +44,17 @@ const Profile: React.FC<IProfile> = ({ contentType, id }) => {
           <S.Title>{title}</S.Title>
           <S.BriefInfoSpan>
             <S.BriefInfo>
-              {releaseYear} {genres}▪{" "}
-              {countries.map((country) => (
-                <S.Flag key={country.iso_3166_1}>
-                  <Image
-                    src={getCountryFlag(country.iso_3166_1)}
-                    alt={country.name}
-                  />
-                </S.Flag>
-              ))}
+              {releaseDate && parseDate(releaseDate).year} {genres}{" "}
+              {genres && `▪`}{" "}
+              {countries &&
+                countries.map((country) => (
+                  <S.Flag key={country.iso_3166_1}>
+                    <Image
+                      src={getCountryFlag(country.iso_3166_1)}
+                      alt={country.name}
+                    />
+                  </S.Flag>
+                ))}
             </S.BriefInfo>
           </S.BriefInfoSpan>
 
