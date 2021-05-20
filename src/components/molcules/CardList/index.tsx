@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import * as S from "./style";
 import leftArrow from "images/left-arrow.svg";
 import rightArrow from "images/right-arrow.svg";
+import { contentTypeState } from "store/header";
+import { useRecoilValue } from "recoil";
 export interface ICardList {
   contentTitle: string;
   wrap?: boolean;
@@ -18,7 +20,7 @@ const CardList: React.FC<ICardList> = ({
   const [containerWidth, setContainerWidth] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPage, setTotalPage] = useState(0);
-
+  const contentType = useRecoilValue(contentTypeState);
   useEffect(() => {
     if (!containerRef.current) {
       return;
@@ -36,13 +38,22 @@ const CardList: React.FC<ICardList> = ({
     observer.observe(containerRef.current);
     return () => observer.disconnect();
   }, []);
+
   useEffect(() => {
-    containerRef.current.scrollTo({
-      left: currentPage * containerWidth,
-      top: 0,
-      behavior: "smooth",
-    });
+    setCurrentPage(0);
+  }, [contentType]);
+
+  useEffect(() => {
+    function moveScroll() {
+      containerRef.current.scrollTo({
+        left: currentPage * containerWidth,
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+    moveScroll();
   }, [currentPage, containerWidth]);
+
   const handlePageToLeft = () => {
     setCurrentPage(currentPage - 1);
   };
