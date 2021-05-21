@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseUrl, discoverUrl } from "common/url";
+import { baseUrl } from "common/url";
 const apiKey = process.env.REACT_APP_TMDB_KEY;
 
 export const fetcherWithParams = (url: string, params?: Object) =>
@@ -13,4 +13,7 @@ export const fetcherWithParams = (url: string, params?: Object) =>
       region: "KR",
       ...params,
     },
-  }).then((res) => res.data);
+  }).then(
+    (res) => res.data,
+    (err) => Promise.reject(err)
+  );
