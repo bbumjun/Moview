@@ -1,4 +1,4 @@
-import React, { Ref, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import * as S from "./style";
 import useIntersect from "hooks/useIntersect";
 export interface ImageProps {
@@ -18,7 +18,7 @@ const Image: React.FC<ImageProps> = ({ src, alt }) => {
       elementRef.current.src = src;
       elementRef.current.alt = alt;
     }
-  }, [isVisible]);
+  }, [isVisible, src]);
   return <S.Image ref={elementRef}></S.Image>;
 };
 
