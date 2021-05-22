@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import * as S from "./style";
 import useIntersect from "hooks/useIntersect";
+import defaultImage from "images/default.png";
 export interface ImageProps {
   src: string;
   alt: string;
@@ -15,11 +16,17 @@ const Image: React.FC<ImageProps> = ({ src, alt }) => {
 
   useEffect(() => {
     if (isVisible) {
-      elementRef.current.src = src;
-      elementRef.current.alt = alt;
+      elementRef.current.src = elementRef.current.dataset.src;
     }
   }, [isVisible, src]);
-  return <S.Image ref={elementRef}></S.Image>;
+  return (
+    <S.Image
+      ref={elementRef}
+      src={defaultImage}
+      data-src={src}
+      alt={alt}
+    ></S.Image>
+  );
 };
 
 export default Image;
