@@ -65,7 +65,7 @@ const Header: React.FC<IHeaderProps> = ({ className = null }) => {
         <S.RightSideContainer>
           <S.SearchBar
             placeholder="작품 제목을 검색해보세요."
-            onChange={handleInputChange}
+            handleInputChange={handleInputChange}
             inputName="searchInput"
           />
         </S.RightSideContainer>

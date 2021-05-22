@@ -10,7 +10,7 @@ const Template: Story<SearchInputProps> = () => (
   <SearchInput
     placeholder="Search..."
     inputName="searchInput"
-    onChange={(e) => {}}
+    handleInputChange={(e) => {}}
   />
 );
 export const Default = Template.bind({});
