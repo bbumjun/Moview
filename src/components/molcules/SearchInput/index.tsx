@@ -1,34 +1,33 @@
-import React, { useEffect, useState, useRef, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, Suspense } from "react";
 import * as S from "./style";
 import searchIcon from "images/search.png";
-import SearchedList from "components/molcules/SearchedList";
-import { fetcherWithParams } from "common/requests";
-import useSwr from "swr";
-import useActiveElement from "hooks/useActiveElement";
 import { useRecoilValue } from "recoil";
 import { searchInputState } from "store/header";
+const SearchedList = React.lazy(
+  () => import("components/molcules/SearchedList")
+);
 export interface SearchInputProps {
   placeholder: string;
   inputName: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   className?: string;
 }
-
 const SearchInput: React.FC<SearchInputProps> = ({
   placeholder,
   inputName,
-  onChange,
+  handleInputChange,
   className = "",
 }) => {
-  const inputRef = useRef<HTMLInputElement>();
   const inputValue = useRecoilValue(searchInputState);
-  const { data } = useSwr(
-    inputValue.trim() ? ["search/multi", inputValue] : null,
-    (url, value) => fetcherWithParams(url, { query: value })
-  );
-
+  const [isFocused, setFocused] = useState(false);
+  const handleInputFocusIn = () => {
+    setFocused(true);
+  };
+  const handleInputFocusOut = () => {
+    setFocused(false);
+  };
   return (
-    <S.Container>
+    <S.Container onFocus={handleInputFocusIn} onBlur={handleInputFocusOut}>
       <S.InputContainer className={className}>
         <S.Label>
           <S.StyledIcon alt="search" src={searchIcon} height={1} />
@@ -36,14 +35,11 @@ const SearchInput: React.FC<SearchInputProps> = ({
             value={inputValue}
             placeholder={placeholder}
             inputName={inputName}
-            onChange={onChange}
-            inputRef={inputRef}
+            handleInputChange={handleInputChange}
           />
         </S.Label>
       </S.InputContainer>
-      {inputValue.trim() && data && data.total_results !== 0 && (
-        <SearchedList items={data.results} />
-      )}
+      <Suspense fallback={<></>}>{isFocused && <SearchedList />}</Suspense>
     </S.Container>
   );
 };

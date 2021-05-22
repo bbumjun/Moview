@@ -4,28 +4,25 @@ export interface InputProps {
   value: string;
   placeholder: string;
   inputName: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   className?: string;
-  inputRef: React.RefObject<HTMLInputElement>;
 }
 
 const Input: React.FC<InputProps> = ({
   value,
   placeholder,
-  onChange,
+  handleInputChange,
   inputName,
   className = "",
-  inputRef,
 }) => (
   <S.Input
     type="text"
     value={value}
     name={inputName}
     placeholder={placeholder}
-    onChange={onChange}
+    onChange={handleInputChange}
     className={className}
     autoComplete="off"
-    ref={inputRef}
   />
 );
 

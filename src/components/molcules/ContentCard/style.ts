@@ -16,7 +16,6 @@ export const ImageWrapper = styled.div`
   max-width: 25rem;
   border-radius: 5px;
   border: 1px solid lightgray;
-  background-color: whitesmoke;
   overflow: hidden;
 `;
 

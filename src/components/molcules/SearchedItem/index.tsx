@@ -3,9 +3,7 @@ import { getSmallImgUrl } from "common/url";
 import { parseDate, ratio } from "common/utils";
 import { IContent } from "types";
 import AspectRatioImage from "components/molcules/AspectRatioImage";
-import defaultImage from "images/picture.svg";
 import * as S from "./style";
-import Icon from "components/atoms/Icon";
 import { useRecoilValue } from "recoil";
 import { movieGenresState, tvGenresState } from "store/genres";
 import Link from "components/atoms/Link";
@@ -23,10 +21,12 @@ const SearchedItem = ({ data }: SearchedItemProps) => {
     }
     return text.substr(0, maxLength) + "...";
   }
-
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+  };
   return (
     <Link to={`/contents/${data.media_type}/${data.id}`}>
-      <S.Container>
+      <S.Container onMouseDown={handleMouseDown}>
         <S.Thumnail>
           <AspectRatioImage
             src={getSmallImgUrl(data.poster_path)}

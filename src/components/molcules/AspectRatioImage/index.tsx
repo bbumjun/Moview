@@ -10,9 +10,7 @@ export interface IAspectRatioImage {
   className?: string;
 }
 
-const AspectRatioContainer = styled(AspectRatio)`
-  background-color: ${({ theme }) => theme.colors.lightGray};
-`;
+const AspectRatioContainer = styled(AspectRatio)``;
 const DefaultImageWrapper = styled.div`
   width: 50%;
   height: 100%;
