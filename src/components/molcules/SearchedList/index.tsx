@@ -1,28 +1,43 @@
-import React, { RefObject, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import Text from "components/atoms/Text";
 import theme from "common/theme";
 import { IContent, IContentList } from "types";
 import SearchedItem from "components/molcules/SearchedItem";
-import ErrorBoundary from "components/atoms/ErrorBoundary";
+import useSwr from "swr";
+import { fetcherWithParams } from "common/requests";
 import { useRecoilState } from "recoil";
 import { searchInputState } from "store/header";
-export interface SearchedListProps {
-  items: IContentList;
-}
-const SearchedList = ({ items }: SearchedListProps) => {
-  const filteredItems = items.filter((item) => {
-    if (item.genre_ids === undefined || item.release_date === undefined)
-      return false;
-    return true;
-  });
-  const [, setInputValue] = useRecoilState(searchInputState);
+
+const SearchedList = () => {
+  const [inputValue, setInputValue] = useRecoilState(searchInputState);
+  const [filteredItems, setFilteredItems] = useState([]);
   const handleItemClick = () => {
     setInputValue("");
   };
+
+  const { data } = useSwr<{ results: IContentList }>(
+    inputValue.trim() ? ["search/multi", inputValue.trim()] : null,
+    (url, value) => fetcherWithParams(url, { query: value }),
+    { suspense: true }
+  );
+
+  const filterSearchResults = (items: IContentList) => {
+    return items.filter((item) => {
+      if (item.genre_ids === undefined || item.release_date === undefined)
+        return false;
+      return true;
+    });
+  };
+
+  useEffect(() => {
+    if (!data) return;
+    setFilteredItems(filterSearchResults(data.results));
+  }, [data]);
+
   return (
-    <ErrorBoundary>
-      <Suspense fallback={<></>}>
+    <>
+      {inputValue.trim() && (
         <S.Container>
           <Text padding="0.5rem" fontWeight={500} color={theme.colors.red}>
             연관 검색어
@@ -35,8 +50,8 @@ const SearchedList = ({ items }: SearchedListProps) => {
             ))}
           </S.List>
         </S.Container>
-      </Suspense>
-    </ErrorBoundary>
+      )}
+    </>
   );
 };
 export default SearchedList;
