@@ -27,13 +27,13 @@ const SearchedItem = ({ data }: SearchedItemProps) => {
   return (
     <Link to={`/contents/${data.media_type}/${data.id}`}>
       <S.Container onMouseDown={handleMouseDown}>
-        <S.Thumnail>
+        <S.Thumbnail>
           <AspectRatioImage
             src={getSmallImgUrl(data.poster_path)}
             ratio={1 / ratio.standard}
             alt={title}
           />
-        </S.Thumnail>
+        </S.Thumbnail>
         <S.TextContainer>
           <S.FirstLine>
             <S.Title fontSize={1} fontWeight={700}>
@@ -47,10 +47,10 @@ const SearchedItem = ({ data }: SearchedItemProps) => {
           </S.FirstLine>
           <S.SecondLine>
             {data.media_type === "movie" &&
-              data.genre_ids.slice(0, 3).map((gerneId) => {
-                const genre = movieGenres.find((genre) => genre.id === gerneId);
+              data.genre_ids.slice(0, 3).map((genreId) => {
+                const genre = movieGenres.find((genre) => genre.id === genreId);
                 return (
-                  <li key={gerneId}>
+                  <li key={genreId}>
                     <S.Genre color="white" bgColor={genre.color}>
                       {genre.name}
                     </S.Genre>
@@ -58,10 +58,10 @@ const SearchedItem = ({ data }: SearchedItemProps) => {
                 );
               })}
             {data.media_type === "tv" &&
-              data.genre_ids.slice(0, 3).map((gerneId) => {
-                const genre = tvGenres.find((genre) => genre.id === gerneId);
+              data.genre_ids.slice(0, 3).map((genreId) => {
+                const genre = tvGenres.find((genre) => genre.id === genreId);
                 return (
-                  <li key={gerneId}>
+                  <li key={genreId}>
                     <S.Genre color="white" bgColor={genre.color}>
                       {genre.name}
                     </S.Genre>
@@ -75,4 +75,4 @@ const SearchedItem = ({ data }: SearchedItemProps) => {
   );
 };
 
-export default SearchedItem;
+export default React.memo(SearchedItem);

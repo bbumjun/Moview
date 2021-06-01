@@ -3,7 +3,7 @@ import Text from "components/atoms/Text";
 export const Container = styled.div`
   display: flex;
 `;
-export const Thumnail = styled.div`
+export const Thumbnail = styled.div`
   width: 4rem;
   height: 5rem;
   overflow: hidden;
