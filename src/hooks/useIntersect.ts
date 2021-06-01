@@ -26,9 +26,9 @@ const useIntersect = (
 
     if (!hasIOSupport || frozen || !node) return;
 
-    const obaserverParams = { threshold, root, rootMargin };
+    const observerParams = { threshold, root, rootMargin };
 
-    const observer = new IntersectionObserver(updateEntry, obaserverParams);
+    const observer = new IntersectionObserver(updateEntry, observerParams);
 
     observer.observe(node);
 
