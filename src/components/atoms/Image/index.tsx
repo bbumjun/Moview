@@ -29,4 +29,4 @@ const Image: React.FC<ImageProps> = ({ src, alt }) => {
   );
 };
 
-export default Image;
+export default React.memo(Image);

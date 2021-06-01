@@ -34,4 +34,4 @@ const Text: React.FC<TextProps> = ({
   </S.Text>
 );
 
-export default Text;
+export default React.memo(Text);

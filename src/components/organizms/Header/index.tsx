@@ -18,10 +18,10 @@ const Header: React.FC<IHeaderProps> = ({ className = null }) => {
 
   const [contentType, setContentType] = useRecoilState(contentTypeState);
   const onMovieClick = () => {
-    setContentType("movie");
+    if (contentType !== "movie") setContentType("movie");
   };
   const onTVClick = () => {
-    setContentType("tv");
+    if (contentType !== "tv") setContentType("tv");
   };
 
   const [keyValue] = useKeyPress();
@@ -47,19 +47,20 @@ const Header: React.FC<IHeaderProps> = ({ className = null }) => {
             </S.Logo>
           </Link>
           <ButtonList>
-            <Link to={"/"} onClick={onMovieClick}>
-              <S.StyledButton
-                key={CATEGORY_MOVIE}
-                active={contentType == "movie"}
-              >
-                {CATEGORY_MOVIE}
-              </S.StyledButton>
-            </Link>
-            <Link to={"/"} onClick={onTVClick}>
-              <S.StyledButton key={CATEGORY_TV} active={contentType == "tv"}>
-                {CATEGORY_TV}
-              </S.StyledButton>
-            </Link>
+            <S.StyledButton
+              key={CATEGORY_MOVIE}
+              active={contentType == "movie"}
+              onClick={onMovieClick}
+            >
+              {CATEGORY_MOVIE}
+            </S.StyledButton>
+            <S.StyledButton
+              key={CATEGORY_TV}
+              active={contentType == "tv"}
+              onClick={onTVClick}
+            >
+              {CATEGORY_TV}
+            </S.StyledButton>
           </ButtonList>
         </S.LeftSideContainer>
         <S.RightSideContainer>

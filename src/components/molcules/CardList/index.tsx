@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import * as S from "./style";
 import leftArrow from "images/left-arrow.svg";
 import rightArrow from "images/right-arrow.svg";
@@ -54,13 +54,13 @@ const CardList: React.FC<ICardList> = ({
     moveScroll();
   }, [currentPage, containerWidth]);
 
-  const handlePageToLeft = () => {
+  const handlePageToLeft = useCallback(() => {
     setCurrentPage(currentPage - 1);
-  };
+  }, [currentPage]);
 
-  const handlePageToRight = () => {
+  const handlePageToRight = useCallback(() => {
     setCurrentPage(currentPage + 1);
-  };
+  }, [currentPage]);
 
   return (
     <S.Wrapper>
