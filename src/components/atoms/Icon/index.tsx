@@ -13,4 +13,4 @@ const Icon: React.FC<IconProps> = ({ alt, src, height, className = null }) => (
   </S.Wrapper>
 );
 
-export default Icon;
+export default React.memo(Icon);

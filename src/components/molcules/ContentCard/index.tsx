@@ -52,4 +52,4 @@ const ContentCard: React.FC<ContentCardProps> = ({
     </S.CardContainer>
   );
 };
-export default ContentCard;
+export default React.memo(ContentCard);

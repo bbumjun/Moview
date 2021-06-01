@@ -9,4 +9,4 @@ const ButtonList: React.FC<ButtonListProps> = ({ children }) => {
   return <S.ButtonList>{children}</S.ButtonList>;
 };
 
-export default ButtonList;
+export default React.memo(ButtonList);
