@@ -47,20 +47,24 @@ const Header: React.FC<IHeaderProps> = ({ className = null }) => {
             </S.Logo>
           </Link>
           <ButtonList>
-            <S.StyledButton
-              key={CATEGORY_MOVIE}
-              active={contentType == "movie"}
-              onClick={onMovieClick}
-            >
-              {CATEGORY_MOVIE}
-            </S.StyledButton>
-            <S.StyledButton
-              key={CATEGORY_TV}
-              active={contentType == "tv"}
-              onClick={onTVClick}
-            >
-              {CATEGORY_TV}
-            </S.StyledButton>
+            <Link to="/">
+              <S.StyledButton
+                key={CATEGORY_MOVIE}
+                active={contentType == "movie"}
+                onClick={onMovieClick}
+              >
+                {CATEGORY_MOVIE}
+              </S.StyledButton>
+            </Link>
+            <Link to="/">
+              <S.StyledButton
+                key={CATEGORY_TV}
+                active={contentType == "tv"}
+                onClick={onTVClick}
+              >
+                {CATEGORY_TV}
+              </S.StyledButton>
+            </Link>
           </ButtonList>
         </S.LeftSideContainer>
         <S.RightSideContainer>
