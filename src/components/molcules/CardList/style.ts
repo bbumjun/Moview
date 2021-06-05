@@ -17,6 +17,10 @@ export const ContentListContainer = styled.ul<{ $wrap: boolean }>`
 export const Wrapper = styled.div`
   position: relative;
 `;
+export const TitleContent = styled.div`
+  display: flex;
+  align-items: center;
+`;
 export const Title = styled(Text)``;
 export const LeftButton = styled(Button)`
   position: absolute;

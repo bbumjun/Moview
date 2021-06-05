@@ -4,6 +4,7 @@ import CardList from "components/molcules/CardList";
 import { getSmallImgUrl } from "common/url";
 import { getHalfAndRounded } from "common/utils";
 import useContentList from "hooks/useContentList";
+import Link from "src/components/atoms/Link";
 export interface ContentListProps {
   contentTitle: string;
   contentType: "movie" | "tv";
@@ -24,11 +25,23 @@ const ContentList: React.FC<ContentListProps> = ({
   numberPerLine = 5,
 }) => {
   const { contents } = useContentList(url, params);
+  const viewWholeItemsButton = (
+    <Link
+      to={{
+        pathname: url,
+        state: { params, contentTitle, contentType },
+      }}
+      padding="0.5rem"
+    >
+      더 보기
+    </Link>
+  );
   return (
     <CardList
       contentTitle={contentTitle}
       wrap={wrap}
       titleFontSize={titleFontSize}
+      viewWholeItemsButton={viewWholeItemsButton}
       items={
         contents.length === 0
           ? "아직 등록된 작품이 없어요."
