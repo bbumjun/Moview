@@ -56,7 +56,7 @@ const ContentList: React.FC<ContentListProps> = ({
               return (
                 <ContentCard
                   contentType={contentType}
-                  key={content.id}
+                  key={index}
                   index={index}
                   title={title}
                   imgSrc={imgSrc}
