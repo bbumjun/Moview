@@ -36,7 +36,7 @@ const InfiniteContentList: React.FC<ContentListProps> = ({
   return (
     <>
       <CardList
-        contentTitle={contentTitle}
+        contentTitle={`${contentTitle} 한눈에 보기`}
         wrap={wrap}
         titleFontSize={titleFontSize}
         items={
