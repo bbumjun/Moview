@@ -30,7 +30,7 @@ const InfiniteContentList: React.FC<ContentListProps> = ({
   const { contents, size, setSize } = useInfiniteContentList(url, params);
   useEffect(() => {
     if (entry?.isIntersecting) {
-      setSize(size + 1);
+      setSize(size + 2);
     }
   }, [entry]);
   return (
