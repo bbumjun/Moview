@@ -5,7 +5,7 @@ import Template from "templates/MainTemplate";
 import ErrorBoundary from "src/components/atoms/ErrorBoundary";
 import Loader from "src/components/atoms/Loader";
 import InfiniteContentList from "src/components/organizms/InfiniteContentList";
-const WholeItemsPage = () => {
+const WholeContentPage = () => {
   const location = useLocation<{
     params: Object;
     contentTitle: string;
@@ -25,4 +25,4 @@ const WholeItemsPage = () => {
   );
 };
 
-export default WholeItemsPage;
+export default WholeContentPage;
