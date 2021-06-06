@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
-import BackgroundPoster from "components/molcules/BackgroundPoster";
-import AspectRatioImage from "components/molcules/AspectRatioImage";
+import BackgroundPoster from "src/components/molecules/BackgroundPoster";
+import AspectRatioImage from "src/components/molecules/AspectRatioImage";
 import Image from "components/atoms/Image";
 import { ratio, getCountryFlag, parseDate } from "common/utils";
 import { getSmallImgUrl } from "common/url";

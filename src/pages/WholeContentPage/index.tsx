@@ -4,7 +4,7 @@ import { Location } from "history";
 import Template from "templates/MainTemplate";
 import ErrorBoundary from "src/components/atoms/ErrorBoundary";
 import Loader from "src/components/atoms/Loader";
-import InfiniteContentList from "src/components/organizms/InfiniteContentList";
+import InfiniteContentList from "src/components/organisms/InfiniteContentList";
 const WholeContentPage = () => {
   const location = useLocation<{
     params: Object;

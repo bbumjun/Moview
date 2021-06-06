@@ -1,6 +1,6 @@
-import React, { ChangeEvent, useState, useEffect } from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import * as S from "./style";
-import ButtonList from "../../molcules/ButtonList";
+import ButtonList from "../../molecules/ButtonList";
 import Link from "../../atoms/Link";
 import { LOGO, CATEGORY_MOVIE, CATEGORY_TV } from "common/string";
 import { useRecoilState } from "recoil";

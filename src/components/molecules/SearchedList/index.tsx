@@ -3,7 +3,7 @@ import * as S from "./style";
 import Text from "components/atoms/Text";
 import theme from "common/theme";
 import { IContent, IContentList } from "types";
-import SearchedItem from "components/molcules/SearchedItem";
+import SearchedItem from "src/components/molecules/SearchedItem";
 import useSwr from "swr";
 import { fetcherWithParams } from "common/requests";
 import { useRecoilState } from "recoil";

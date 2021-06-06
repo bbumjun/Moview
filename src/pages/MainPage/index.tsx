@@ -8,7 +8,7 @@ import { getCurDate } from "common/utils";
 import Loader from "components/atoms/Loader";
 
 const ContentList = React.lazy(
-  () => import("components/organizms/ContentList")
+  () => import("src/components/organisms/ContentList")
 );
 const MainPage: React.FC = () => {
   const contentType = useRecoilValue(contentTypeState);

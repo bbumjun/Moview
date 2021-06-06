@@ -1,8 +1,8 @@
 import React from "react";
-import CastCard, { ICastCard } from "components/molcules/CastCard";
+import CastCard, { ICastCard } from "src/components/molecules/CastCard";
 import useSwr from "swr";
 import { fetcherWithParams } from "common/requests";
-import CardList from "components/molcules/CardList";
+import CardList from "src/components/molecules/CardList";
 
 export interface ICastList {
   contentType: "movie" | "tv";

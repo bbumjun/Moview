@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Text from "../../atoms/Text";
-import SearchInput from "components/molcules/SearchInput";
+import SearchInput from "src/components/molecules/SearchInput";
 import Button from "components/atoms/Button";
 export const Wrapper = styled.div`
   position: sticky;

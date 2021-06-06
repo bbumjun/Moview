@@ -1,6 +1,6 @@
 import React from "react";
-import ContentCard from "components/molcules/ContentCard";
-import CardList from "components/molcules/CardList";
+import ContentCard from "src/components/molecules/ContentCard";
+import CardList from "src/components/molecules/CardList";
 import { getSmallImgUrl } from "common/url";
 import { getHalfAndRounded } from "common/utils";
 import useContentList from "hooks/useContentList";
