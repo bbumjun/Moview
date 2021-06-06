@@ -9,12 +9,14 @@ export interface ICardList {
   wrap?: boolean;
   titleFontSize?: number;
   items: React.ReactNode;
+  viewWholeItemsButton?: React.ReactElement;
 }
 const CardList: React.FC<ICardList> = ({
   contentTitle,
   wrap = false,
   titleFontSize = 1.5,
   items,
+  viewWholeItemsButton = null,
 }) => {
   const containerRef = useRef<HTMLUListElement>();
   const [containerWidth, setContainerWidth] = useState(0);
@@ -64,9 +66,12 @@ const CardList: React.FC<ICardList> = ({
 
   return (
     <S.Wrapper>
-      <S.Title fontSize={titleFontSize} fontWeight={700}>
-        {contentTitle}
-      </S.Title>
+      <S.TitleContent>
+        <S.Title fontSize={titleFontSize} fontWeight={700}>
+          {contentTitle}
+        </S.Title>
+        {!wrap && viewWholeItemsButton}
+      </S.TitleContent>
       <S.ContentListContainer
         ref={containerRef}
         $wrap={wrap}

@@ -5,11 +5,11 @@ import Loader from "components/atoms/Loader";
 import ErrorBoundary from "components/atoms/ErrorBoundary";
 
 const ContentList = React.lazy(
-  () => import("components/organizms/ContentList")
+  () => import("src/components/organisms/ContentList")
 );
-const Profile = React.lazy(() => import("components/organizms/Profile"));
-const Overview = React.lazy(() => import("components/organizms/Overview"));
-const CastList = React.lazy(() => import("components/organizms/CastList"));
+const Profile = React.lazy(() => import("src/components/organisms/Profile"));
+const Overview = React.lazy(() => import("src/components/organisms/Overview"));
+const CastList = React.lazy(() => import("src/components/organisms/CastList"));
 const DetailPage: React.FC = () => {
   const { id, contentType } = useParams<{
     id: string;

@@ -1,15 +1,11 @@
 import useSwr from "swr";
 import { IContent } from "types";
-import { fetcherWithParams } from "common/requests";
+import { contentFetcher } from "common/requests";
 const useContentList = (url: string, params?: Object) => {
-  const { data } = useSwr<{ results: IContent[] }>(
-    [url, params],
-    fetcherWithParams,
-    {
-      suspense: true,
-    }
-  );
+  const { data } = useSwr<IContent[]>([url, params], contentFetcher, {
+    suspense: true,
+  });
 
-  return { contents: data.results };
+  return { contents: data };
 };
 export default useContentList;

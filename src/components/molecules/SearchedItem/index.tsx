@@ -2,7 +2,7 @@ import React from "react";
 import { getSmallImgUrl } from "common/url";
 import { parseDate, ratio } from "common/utils";
 import { IContent } from "types";
-import AspectRatioImage from "components/molcules/AspectRatioImage";
+import AspectRatioImage from "src/components/molecules/AspectRatioImage";
 import * as S from "./style";
 import { useRecoilValue } from "recoil";
 import { movieGenresState, tvGenresState } from "store/genres";

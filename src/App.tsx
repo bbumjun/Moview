@@ -2,10 +2,12 @@ import React from "react";
 import { Router, Switch, Route } from "react-router-dom";
 import MainPage from "pages/MainPage";
 import DetailPage from "pages/DetailPage";
-import Header from "components/organizms/Header";
-import Footer from "components/organizms/Footer";
+import Header from "src/components/organisms/Header";
+import Footer from "src/components/organisms/Footer";
 import { RecoilRoot } from "recoil";
 import { createBrowserHistory } from "history";
+import WholeContentPage from "./pages/WholeContentPage";
+import TopButton from "./components/molecules/TopButton";
 const history = createBrowserHistory();
 export const App: React.FC = () => {
   return (
@@ -15,7 +17,9 @@ export const App: React.FC = () => {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route path="/contents/:contentType/:id" component={DetailPage} />
+          <Route path="/discover" component={WholeContentPage} />
         </Switch>
+        <TopButton />
         <Footer />
       </RecoilRoot>
     </Router>

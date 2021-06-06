@@ -4,7 +4,7 @@ import searchIcon from "images/search.png";
 import { useRecoilValue } from "recoil";
 import { searchInputState } from "store/header";
 const SearchedList = React.lazy(
-  () => import("components/molcules/SearchedList")
+  () => import("src/components/molecules/SearchedList")
 );
 export interface SearchInputProps {
   placeholder: string;

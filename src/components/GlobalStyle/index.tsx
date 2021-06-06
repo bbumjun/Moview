@@ -3,11 +3,10 @@ import reset from "minireset.css";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
-  ${({ theme }) => `
 
-  `}
   html,body {
     font-family: 'Noto Sans KR','Oxygen', sans-serif;
+    scroll-behavior: smooth;
   }
   a {
     text-decoration : none;

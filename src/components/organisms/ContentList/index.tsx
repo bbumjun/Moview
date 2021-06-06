@@ -1,9 +1,11 @@
 import React from "react";
-import ContentCard from "components/molcules/ContentCard";
-import CardList from "components/molcules/CardList";
+import ContentCard from "src/components/molecules/ContentCard";
+import CardList from "src/components/molecules/CardList";
 import { getSmallImgUrl } from "common/url";
 import { getHalfAndRounded } from "common/utils";
 import useContentList from "hooks/useContentList";
+import Link from "src/components/atoms/Link";
+import * as S from "./style";
 export interface ContentListProps {
   contentTitle: string;
   contentType: "movie" | "tv";
@@ -24,11 +26,24 @@ const ContentList: React.FC<ContentListProps> = ({
   numberPerLine = 5,
 }) => {
   const { contents } = useContentList(url, params);
+  const viewWholeItemsButton = (
+    <Link
+      to={{
+        pathname: url,
+        state: { params, contentTitle, contentType },
+      }}
+    >
+      <S.StyledText fontWeight={700} fontSize={1} padding={"0 0.2rem"}>
+        More
+      </S.StyledText>
+    </Link>
+  );
   return (
     <CardList
       contentTitle={contentTitle}
       wrap={wrap}
       titleFontSize={titleFontSize}
+      viewWholeItemsButton={viewWholeItemsButton}
       items={
         contents.length === 0
           ? "아직 등록된 작품이 없어요."
@@ -41,7 +56,7 @@ const ContentList: React.FC<ContentListProps> = ({
               return (
                 <ContentCard
                   contentType={contentType}
-                  key={content.id}
+                  key={index}
                   index={index}
                   title={title}
                   imgSrc={imgSrc}

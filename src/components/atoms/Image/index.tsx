@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { ImgHTMLAttributes, useEffect, useRef } from "react";
 import * as S from "./style";
 import useIntersect from "hooks/useIntersect";
 import defaultImage from "images/default.png";
-export interface ImageProps {
+export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
   index?: number;
 }
 
-const Image: React.FC<ImageProps> = ({ src, alt }) => {
+const Image: React.FC<ImageProps> = ({ src, alt, ...rest }) => {
   const elementRef = useRef<HTMLImageElement>();
   const IntersectOptions = { freezeOnceVisible: true };
   const entry = useIntersect(elementRef, IntersectOptions);
@@ -25,7 +25,8 @@ const Image: React.FC<ImageProps> = ({ src, alt }) => {
       src={defaultImage}
       data-src={src}
       alt={alt}
-    ></S.Image>
+      {...rest}
+    />
   );
 };
 
