@@ -19,7 +19,8 @@ export const Wrapper = styled.div`
 `;
 export const TitleContent = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
 `;
 export const Title = styled(Text)``;
 export const LeftButton = styled(Button)`

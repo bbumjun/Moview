@@ -5,6 +5,7 @@ import { getSmallImgUrl } from "common/url";
 import { getHalfAndRounded } from "common/utils";
 import useContentList from "hooks/useContentList";
 import Link from "src/components/atoms/Link";
+import * as S from "./style";
 export interface ContentListProps {
   contentTitle: string;
   contentType: "movie" | "tv";
@@ -31,9 +32,10 @@ const ContentList: React.FC<ContentListProps> = ({
         pathname: url,
         state: { params, contentTitle, contentType },
       }}
-      padding="0.5rem"
     >
-      더 보기
+      <S.StyledText fontWeight={700} fontSize={1} padding={"0 0.2rem"}>
+        More
+      </S.StyledText>
     </Link>
   );
   return (
