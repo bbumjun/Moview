@@ -14,6 +14,7 @@ const useInfiniteContentList = (url: string, params?: object) => {
     {
       suspense: true,
       revalidateAll: true,
+      initialSize: 2,
     }
   );
   let contents: IContent[] = [];
