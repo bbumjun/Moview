@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { useLocation } from "react-router";
-import { Location } from "history";
 import Template from "templates/MainTemplate";
 import ErrorBoundary from "src/components/atoms/ErrorBoundary";
 import Loader from "src/components/atoms/Loader";
@@ -18,7 +17,12 @@ const WholeContentPage = () => {
     <ErrorBoundary>
       <Suspense fallback={<Loader />}>
         <Template>
-          <InfiniteContentList {...contentListProps} url={url} wrap />
+          <InfiniteContentList
+            {...contentListProps}
+            url={url}
+            wrap
+            numberPerLine={7}
+          />
         </Template>
       </Suspense>
     </ErrorBoundary>
