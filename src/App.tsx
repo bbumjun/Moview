@@ -7,6 +7,7 @@ import Footer from "src/components/organisms/Footer";
 import { RecoilRoot } from "recoil";
 import { createBrowserHistory } from "history";
 import WholeContentPage from "./pages/WholeContentPage";
+import TopButton from "./components/molecules/TopButton";
 const history = createBrowserHistory();
 export const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ export const App: React.FC = () => {
           <Route path="/contents/:contentType/:id" component={DetailPage} />
           <Route path="/discover" component={WholeContentPage} />
         </Switch>
+        <TopButton />
         <Footer />
       </RecoilRoot>
     </Router>
