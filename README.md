@@ -131,7 +131,7 @@ const DetailPage: React.FC = () => {
     </ErrorBoundary>
 ```
 
-`ErrorBoundary`의 경우 네트워크 에러도 함께 처리하기 위해 `axios`에서 `catch method`에서 에러가 처리되기 전에 `then`의 두번째 콜백함수로 `Promise.reejct(err)`를 전달했고, `ErrorBoundary` 는 전달받은 `error` 객체를 `status`에 따라 다른 에러메시지를 유저에게 보여줄 수 있도록 구현했습니다.
+`ErrorBoundary`의 경우 네트워크 에러도 함께 처리하기 위해 `axios`에서 `catch block`에서 에러가 처리되기 전에 `then`의 두번째 콜백함수로 `Promise.reejct(err)`를 전달했고, `ErrorBoundary` 는 전달받은 `error` 객체를 `status`에 따라 다른 에러메시지를 유저에게 보여줄 수 있도록 구현했습니다.
 
 ```typescript
 class ErrorBoundary extends React.Component<
