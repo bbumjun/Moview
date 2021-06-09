@@ -191,5 +191,4 @@ class ErrorBoundary extends React.Component<
 - Recoil을 사용한 전역상태 관리
 - Styled Components를 사용한 CSS-in-JS 스타일링
 - React dev tools 를 사용한 프로파일링 및 성능 최적화
-- 비동기 데이터 처리, 에러에 대한 처리
 - React Router로 클라이언트 사이드 라우팅
