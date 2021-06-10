@@ -79,9 +79,6 @@
     "storybook": "NODE_PATH=src start-storybook -s ./src/images -p 6006",
     "build-storybook": "build-storybook"
   },
-  "browserslist": [
-    "defaults"
-  ],
   "jest": {
     "moduleDirectories": [
       "src",
