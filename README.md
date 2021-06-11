@@ -190,6 +190,7 @@ class ErrorBoundary extends React.Component<
 `Webpack`이 `React App`을 어떻게 동작하게 만드는지 알기 위해서 직접 빈 프로젝트에서부터 `Webpack` 설정 파일을 채워나갔습니다. 작은 프로젝트가 실행될 수 있을 정도의 간단한 설정이었음에도 상당히 까다로운 작업이었습니다.
 
 ```javascript
+//webpack.config.js
 module.exports = {
   // mode에 따라 빌드 결과물이 달라진다. 콘솔에 로그 여부나 번들 파일 압축 등
   mode: isProd ? "production" : "development",
