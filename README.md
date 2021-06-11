@@ -44,6 +44,8 @@ TMDB API를 이용하여 개발한 영화/TV프로그램 소개 앱입니다. �
 >
 > [아토믹 디자인 패턴을 실천하는 방법-1](https://medium.com/@plantstoen/%EC%95%84%ED%86%A0%EB%AF%B9-%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4%EC%9D%84-%EC%8B%A4%EC%B2%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-1-5e8aada05209)
 
+----
+
 ### Intersection Observer API를 활용하여 이미지를 레이지 로딩
 
 컴포넌트에서 개별적으로 사용할 수 있도록 useIntersect라는 커스텀 훅을 만들었습니다.
@@ -95,6 +97,9 @@ const useIntersect = (
 > 참고한 레퍼런스
 >
 > [https://usehooks-typescript.com/react-hook/use-intersection-observer](https://usehooks-typescript.com/react-hook/use-intersection-observer)
+
+----
+
 
 ### Suspense, ErrorBoundary를 사용한 경험
 
@@ -185,6 +190,10 @@ class ErrorBoundary extends React.Component<
 >
 > [https://ko.reactjs.org/docs/error-boundaries.html](https://ko.reactjs.org/docs/error-boundaries.html)
 
+----
+
+
+
 ### Webpack 을 이용한 모듈 번들링 경험
 
 `Webpack`이 `React App`을 어떻게 동작하게 만드는지 알기 위해서 직접 빈 프로젝트에서부터 `Webpack` 설정 파일을 채워나갔습니다. 작은 프로젝트가 실행될 수 있을 정도의 간단한 설정이었음에도 상당히 까다로운 작업이었습니다.
@@ -261,6 +270,7 @@ module.exports = {
 };
 ```
 
+----
 ## 그외 프로젝트를 통해 배운 점
 
 - hook을 사용한 컴포넌트 상태 관리
