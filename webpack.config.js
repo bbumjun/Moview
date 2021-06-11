@@ -20,10 +20,6 @@ module.exports = {
   resolve: {
     modules: [path.join("./"), "node_modules"],
     extensions: [".tsx", ".ts", ".js", "jsx"],
-    fallback: {
-      fs: false,
-      path: false,
-    },
   },
 
   module: {
@@ -33,7 +29,6 @@ module.exports = {
         use: ["babel-loader", "ts-loader"],
         exclude: /node_modules/,
       },
-
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader", "postcss-loader"],
@@ -47,6 +42,7 @@ module.exports = {
       },
     ],
   },
+
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
@@ -60,14 +56,12 @@ module.exports = {
     isDev && new webpack.HotModuleReplacementPlugin(),
     isDev && new BundleAnalyzerPlugin(),
   ].filter(Boolean),
+
   devServer: {
-    contentBase: [path.join(__dirname, "public"), path.join(__dirname, "src")],
     hot: true,
     port: port,
     historyApiFallback: true,
   },
-  stats: {
-    children: true,
-    errorDetails: true,
-  },
+
+  stats: "summary",
 };
