@@ -185,6 +185,81 @@ class ErrorBoundary extends React.Component<
 >
 > [https://ko.reactjs.org/docs/error-boundaries.html](https://ko.reactjs.org/docs/error-boundaries.html)
 
+### Webpack 을 이용한 모듈 번들링 경험
+
+`Webpack`이 `React App`을 어떻게 동작하게 만드는지 알기 위해서 직접 빈 프로젝트에서부터 `Webpack` 설정 파일을 채워나갔습니다. 작은 프로젝트가 실행될 수 있을 정도의 간단한 설정이었음에도 상당히 까다로운 작업이었습니다.
+
+```javascript
+module.exports = {
+  // mode에 따라 빌드 결과물이 달라진다. 콘솔에 로그 여부나 번들 파일 압축 등
+  mode: isProd ? "production" : "development",
+  // entry : 의존성 그래프를 생성하는 진입점
+  entry: "./src/index.tsx",
+  // 번들링의 결과물 파일 설정. 파일의 변화가 생긴 chunk만 hash값이 바뀌도록 설정
+  output: {
+    filename: "[name].[chunkhash:8].js",
+    path: path.join(__dirname, "public"),
+    publicPath: "/",
+  },
+  // 파일 경로 또는 확장자 처리를 위한 옵션
+  resolve: {
+    // import 시 인식할 모듈
+    modules: [path.join("./"), "node_modules"],
+    // import시 확장자 생략 가능
+    extensions: [".tsx", ".ts", ".js", "jsx"],
+  },
+  // .js 외의 파일들을 해석하기 위한 로더 설정
+  // 로더는 베열의 우측->좌측 순서로 실행되는 것을 유의해야함
+  module: {
+    rules: [
+      {
+        // tsx,jsx,ts 모듈 로더 설정
+        test: /\.[tj]sx?$/,
+        use: ["babel-loader", "ts-loader"],
+        exclude: /node_modules/,
+      },
+      {
+        // reset.css 파일을 위한 css 로더설정
+        test: /\.css$/,
+        use: ["style-loader", "css-loader", "postcss-loader"],
+      },
+      {
+        // 그외 assets 파일 로더 설정
+        test: /\.(png|jpe?g|webp|svg)$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+        },
+      },
+    ],
+  },
+  // 그외 웹팩의 다양한 기능을 플러그인을 설치해 사용 할 수 있음
+  plugins: [
+    new webpack.ProgressPlugin(), // 빌드 진행상황을 출력
+    new CleanWebpackPlugin(), // 이전에 빌드된 파일들을 정리
+    new HtmlWebpackPlugin({
+      // 빌드 결과물을 html 파일로 생성
+      template: "src/index.html",
+      hash: true,
+    }),
+    // 배포환경에서 환경변수에 접근할 수 있도록 해줌
+    new Dotenv({
+      systemvars: true,
+    }),
+    isDev && new webpack.HotModuleReplacementPlugin(), // 개발서버 실행중에 변경사항 자동 적용
+    isDev && new BundleAnalyzerPlugin(), // 번들 사이즈 분석
+  ].filter(Boolean),
+  // 개발서버 설정
+  devServer: {
+    hot: true, //HMR on
+    port: port,
+    historyApiFallback: true, // route 외의 url fallback 으로 index.html 서빙
+  },
+  // 빌드 상태를 콘솔에 출력해줌
+  stats: "summary",
+};
+```
+
 ## 그외 프로젝트를 통해 배운 점
 
 - hook을 사용한 컴포넌트 상태 관리
