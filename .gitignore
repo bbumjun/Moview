@@ -43,6 +43,3 @@ storybook-static/
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/storybookjs,react,yarn
-
-#public directory
-/public
