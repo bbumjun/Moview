@@ -28,6 +28,7 @@ export const PosterWrapper = styled.div`
   box-shadow: 0 0 2px rgb(0, 0, 0, 30%);
   overflow: hidden;
   border-radius: 5px;
+  background-color: white;
 
   @media ${({ theme }) => theme.device.tablet} {
     width: 9rem;
