@@ -45,9 +45,12 @@ module.exports = {
 
   plugins: [
     new webpack.ProgressPlugin(),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      dry: true,
+    }),
     new HtmlWebpackPlugin({
       template: "src/index.html",
+      favicon: "src/favicon.png",
       hash: true,
     }),
     new Dotenv({
@@ -58,6 +61,7 @@ module.exports = {
   ].filter(Boolean),
 
   devServer: {
+    contentBase: path.join(__dirname, "/"),
     hot: true,
     port: port,
     historyApiFallback: true,
