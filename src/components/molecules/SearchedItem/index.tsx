@@ -49,6 +49,7 @@ const SearchedItem = ({ data }: SearchedItemProps) => {
             {data.media_type === "movie" &&
               data.genre_ids.slice(0, 3).map((genreId) => {
                 const genre = movieGenres.find((genre) => genre.id === genreId);
+                if (!genre) return;
                 return (
                   <li key={genreId}>
                     <S.Genre color="white" bgColor={genre.color}>
@@ -60,6 +61,7 @@ const SearchedItem = ({ data }: SearchedItemProps) => {
             {data.media_type === "tv" &&
               data.genre_ids.slice(0, 3).map((genreId) => {
                 const genre = tvGenres.find((genre) => genre.id === genreId);
+                if (!genre) return;
                 return (
                   <li key={genreId}>
                     <S.Genre color="white" bgColor={genre.color}>
