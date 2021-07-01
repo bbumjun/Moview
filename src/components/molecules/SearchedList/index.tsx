@@ -24,8 +24,7 @@ const SearchedList = () => {
 
   const filterSearchResults = (items: IContentList) => {
     return items.filter((item) => {
-      if (item.genre_ids === undefined || item.release_date === undefined)
-        return false;
+      if (item.media_type === "person") return false;
       return true;
     });
   };
